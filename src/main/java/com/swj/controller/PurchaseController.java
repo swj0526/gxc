@@ -1,0 +1,115 @@
+package com.swj.controller;
+
+
+import com.swj.entity.TbPurchase;
+import com.swj.entity.TbSell;
+import com.swj.service.PurchaseDetalisService;
+import com.swj.service.PurchaseService;
+import com.swj.util.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * <p>
+ * 前端控制器
+ * </p>
+ *
+ * @author swj
+ * @since 2020-06-09
+ */
+@Api(description = "采购单controller")
+@RestController
+@RequestMapping("/purchase")
+@CrossOrigin
+public class PurchaseController {
+    @Autowired
+    private PurchaseService purchaseService;
+    @Autowired
+    private PurchaseDetalisService detalisService;
+
+    @ApiOperation("新增采购单")
+    @PostMapping("/addPurchase")
+    public Result addPurchase(@RequestBody TbPurchase purchase) {
+        int i = purchaseService.addPurchase(purchase);
+        if (i == 1) {
+            return Result.success();
+        }
+        return Result.error().message("添加失败!");
+    }
+
+    /**
+     * 采购单只有在仓库人员为入库之前才可以修改,入库之后不可修改
+     *
+     * @param purchase
+     * @return
+     */
+    @ApiOperation("修改采购单")
+    @PostMapping("/updatePurchase")
+    public Result updatePurchase(@RequestBody TbPurchase purchase) {
+        int i = purchaseService.updatePurchase(purchase);
+        if (i == 1) {
+            return Result.success();
+        }
+        return Result.error().message("修改失败!");
+    }
+
+    /**
+     * 采购单只有在仓库人员为入库之前才可以删除,入库之后不可删除
+     *
+     * @return
+     */
+    @ApiOperation("删除采购单")
+    @PostMapping("/deletePurchase")
+    public Result deletePurchase(Integer id) {
+        int i = purchaseService.deletePurchase(id);
+        if (i == 1) {
+            return Result.success();
+        }
+        return Result.error().message("删除失败!");
+    }
+
+    @ApiOperation("根据id获取采购单")
+    @PostMapping("/getPurchaseById")
+    public Result getPurchaseById(Integer id) {
+        return Result.success().data(purchaseService.getPurchaseById(id));
+
+    }
+
+    @ApiOperation("采购单列表,分页")
+    @PostMapping("/getPurchaseList")
+    public Result getPurchaseList(Integer page, Integer limit, @RequestBody TbPurchase purchase) {
+        List<TbPurchase> purchaseList = purchaseService.getPurchaseList(page, limit, purchase);
+        return Result.success().listForPage(purchaseList, purchaseService.getTotal());
+    }
+
+    @ApiOperation("/仓库人员检查采购商品并入库")
+    @PostMapping("/checkGoods")
+    public Result checkGoods(Integer page, Integer limit, Integer purchaseId, Map<String, Integer> map) {
+        detalisService.checkGoods(page, limit, purchaseId, map);
+        return Result.success();
+    }
+
+    @ApiOperation("/返回各种状态的采购订单列表")
+    @PostMapping("/getPurchaseListByState")
+    public Result getPurchaseListByState(Integer page, Integer limit, Integer state) {
+        List<TbPurchase> list = purchaseService.getPurchaseListByState(page, limit, state);
+        return Result.success().listForPage(list, purchaseService.getTotal());
+    }
+
+    @ApiOperation("/采购人员最后确认订单,整个订单完成")
+    @PostMapping("/endPurchaseById")
+    public Result endPurchaseById(Integer purchaseId) {
+        int i = purchaseService.endPurchaseById(purchaseId, TbPurchase.STATE_END);
+        if (i == 1) {
+            return Result.success();
+        }
+        return Result.error().message("修改失败!");
+    }
+}
+
