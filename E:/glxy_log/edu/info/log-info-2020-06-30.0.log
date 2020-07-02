@@ -1,0 +1,285 @@
+2020-06-30 08:53:13.736 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 14648 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 08:53:13.740 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 08:53:15.095 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 08:53:15.104 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 08:53:15.105 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 08:53:15.105 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 08:53:15.187 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 08:53:15.187 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1399 ms
+2020-06-30 08:53:16.351 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 08:53:16.420 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 08:53:16.576 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 08:53:16.604 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 08:53:16.605 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 08:53:16.620 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 08:53:16.650 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 08:53:16.801 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 08:53:16.841 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 08:53:16.853 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 08:53:16.878 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 08:53:16.925 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.74 seconds (JVM running for 4.659)
+2020-06-30 08:54:32.610 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 08:54:32.610 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 08:54:32.619 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2020-06-30 08:54:41.067 [http-nio-80-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 08:54:41.551 [http-nio-80-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 11:14:27.562 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 11:14:27.564 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 11:14:27.569 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 11:14:32.939 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 15084 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 11:14:32.941 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 11:14:34.271 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 11:14:34.279 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 11:14:34.280 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 11:14:34.280 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 11:14:34.340 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 11:14:34.340 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1364 ms
+2020-06-30 11:14:35.350 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 11:14:35.407 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 11:14:35.534 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 11:14:35.565 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 11:14:35.566 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 11:14:35.579 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 11:14:35.613 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 11:14:35.756 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 11:14:35.799 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 11:14:35.810 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 11:14:35.837 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 11:14:35.877 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.275 seconds (JVM running for 3.792)
+2020-06-30 11:14:49.116 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 11:14:49.116 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 11:14:49.126 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2020-06-30 11:14:49.409 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 11:14:49.714 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 14:57:07.878 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 14:57:07.881 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 14:57:07.886 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 14:57:32.207 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 15413 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 14:57:32.212 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 14:57:33.457 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 14:57:33.464 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 14:57:33.464 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 14:57:33.465 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 14:57:33.520 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 14:57:33.520 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1258 ms
+2020-06-30 14:57:34.614 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 14:57:34.676 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 14:57:34.801 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 14:57:34.830 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 14:57:34.831 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 14:57:34.841 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 14:57:34.867 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 14:57:34.990 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 14:57:35.033 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 14:57:35.047 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 14:57:35.049 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 14:57:35.078 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 14:57:35.120 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.34 seconds (JVM running for 4.062)
+2020-06-30 14:57:51.598 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 14:57:51.599 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 14:57:51.604 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-06-30 14:57:51.938 [http-nio-80-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 14:57:52.303 [http-nio-80-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 15:12:06.262 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 15:12:06.265 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 15:12:06.271 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 15:12:12.258 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 15472 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 15:12:12.262 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 15:12:13.549 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 15:12:13.555 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 15:12:13.556 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 15:12:13.557 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 15:12:13.612 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 15:12:13.612 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1315 ms
+2020-06-30 15:12:14.776 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 15:12:14.840 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 15:12:14.976 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 15:12:15.004 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 15:12:15.005 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 15:12:15.016 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 15:12:15.042 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 15:12:15.191 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 15:12:15.239 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 15:12:15.255 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 15:12:15.261 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 15:12:15.290 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 15:12:15.335 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.509 seconds (JVM running for 4.289)
+2020-06-30 15:13:22.788 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 15:13:22.788 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 15:13:22.794 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2020-06-30 15:13:22.860 [http-nio-80-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 15:13:23.157 [http-nio-80-exec-4] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 15:57:32.901 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 15:57:32.903 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 15:57:32.908 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 15:57:38.826 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 15622 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 15:57:38.831 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 15:57:40.394 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 15:57:40.401 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 15:57:40.402 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 15:57:40.402 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 15:57:40.462 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 15:57:40.463 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1573 ms
+2020-06-30 15:57:41.605 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 15:57:41.674 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 15:57:41.807 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 15:57:41.833 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 15:57:41.834 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 15:57:41.843 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 15:57:41.870 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 15:57:42.014 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 15:57:42.066 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 15:57:42.082 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 15:57:42.090 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 15:57:42.121 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 15:57:42.167 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.76 seconds (JVM running for 4.503)
+2020-06-30 15:58:17.013 [http-nio-80-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 15:58:17.014 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 15:58:17.020 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2020-06-30 15:58:17.080 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 15:58:17.420 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 17:20:19.605 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 17:20:19.607 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 17:20:19.613 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 17:20:24.333 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 15730 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 17:20:24.337 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 17:20:25.593 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 17:20:25.602 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 17:20:25.603 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 17:20:25.604 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 17:20:25.665 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 17:20:25.665 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1291 ms
+2020-06-30 17:20:26.709 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 17:20:26.774 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 17:20:26.953 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 17:20:26.978 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 17:20:26.979 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 17:20:26.993 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 17:20:27.021 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 17:20:27.173 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 17:20:27.223 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 17:20:27.237 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 17:20:27.244 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 17:20:27.272 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 17:20:27.320 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.326 seconds (JVM running for 3.99)
+2020-06-30 17:20:30.398 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 17:20:30.398 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 17:20:30.405 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2020-06-30 17:20:33.785 [http-nio-80-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 17:20:34.076 [http-nio-80-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 19:50:59.530 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 19:50:59.533 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 19:50:59.538 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 19:51:04.738 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 16106 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 19:51:04.740 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 19:51:06.012 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 19:51:06.019 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 19:51:06.020 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 19:51:06.021 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 19:51:06.081 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 19:51:06.081 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1307 ms
+2020-06-30 19:51:07.121 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 19:51:07.179 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 19:51:07.304 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 19:51:07.330 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 19:51:07.331 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 19:51:07.342 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 19:51:07.367 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 19:51:07.494 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 19:51:07.543 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 19:51:07.557 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 19:51:07.564 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 19:51:07.597 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 19:51:07.644 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.276 seconds (JVM running for 4.001)
+2020-06-30 19:51:15.230 [http-nio-80-exec-4] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 19:51:15.230 [http-nio-80-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 19:51:15.236 [http-nio-80-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2020-06-30 19:51:15.295 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 19:51:15.583 [http-nio-80-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 19:57:30.411 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 19:57:30.412 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 19:57:30.418 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 19:57:35.334 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 16135 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 19:57:35.337 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 19:57:36.560 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 19:57:36.568 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 19:57:36.569 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 19:57:36.569 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 19:57:36.638 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 19:57:36.638 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1241 ms
+2020-06-30 19:57:37.884 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 19:57:37.961 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 19:57:38.098 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 19:57:38.122 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 19:57:38.123 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 19:57:38.133 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 19:57:38.163 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 19:57:38.324 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 19:57:38.381 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 19:57:38.396 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 19:57:38.403 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 19:57:38.436 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 19:57:38.486 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.63 seconds (JVM running for 4.414)
+2020-06-30 19:58:05.623 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 19:58:05.623 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 19:58:05.632 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2020-06-30 19:58:05.872 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 19:58:06.212 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 20:17:09.695 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 20:17:09.697 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 20:17:09.703 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 20:17:27.204 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 16203 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 20:17:27.207 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 20:17:28.399 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 20:17:28.407 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 20:17:28.409 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 20:17:28.409 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 20:17:28.486 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 20:17:28.487 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1237 ms
+2020-06-30 20:17:29.585 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 20:17:29.649 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 20:17:29.786 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 20:17:29.814 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 20:17:29.815 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 20:17:29.826 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 20:17:29.853 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 20:17:30.021 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 20:17:30.079 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 20:17:30.097 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 20:17:30.109 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 20:17:30.150 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 20:17:30.216 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.37 seconds (JVM running for 4.07)
+2020-06-30 20:21:23.486 [http-nio-80-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 20:21:23.486 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 20:21:23.491 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-06-30 20:21:23.548 [http-nio-80-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 20:21:23.857 [http-nio-80-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-06-30 20:31:04.217 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-30 20:31:04.219 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-06-30 20:31:04.225 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-06-30 20:31:09.428 [main] INFO  com.swj.WarehouseApplication - Starting WarehouseApplication on MacBook-Pro.local with PID 16259 (/Users/macbookpro/IdeaProjects/gxc/target/classes started by macbookpro in /Users/macbookpro/IdeaProjects/gxc)
+2020-06-30 20:31:09.430 [main] INFO  com.swj.WarehouseApplication - The following profiles are active: dev
+2020-06-30 20:31:10.478 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2020-06-30 20:31:10.485 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2020-06-30 20:31:10.486 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-06-30 20:31:10.486 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-30 20:31:10.546 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-06-30 20:31:10.546 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1076 ms
+2020-06-30 20:31:11.800 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-30 20:31:11.864 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-30 20:31:11.995 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2020-06-30 20:31:12.026 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2020-06-30 20:31:12.027 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2020-06-30 20:31:12.036 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-06-30 20:31:12.062 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2020-06-30 20:31:12.199 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getSelectListUsingPOST_1
+2020-06-30 20:31:12.247 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_1
+2020-06-30 20:31:12.258 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_2
+2020-06-30 20:31:12.265 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getListUsingPOST_3
+2020-06-30 20:31:12.296 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: checkGoodsUsingPOST_1
+2020-06-30 20:31:12.344 [main] INFO  com.swj.WarehouseApplication - Started WarehouseApplication in 3.337 seconds (JVM running for 4.104)
+2020-06-30 20:31:21.219 [http-nio-80-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-30 20:31:21.220 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-06-30 20:31:21.225 [http-nio-80-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-06-30 20:31:21.478 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-06-30 20:31:21.801 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
