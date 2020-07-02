@@ -29,4 +29,9 @@ public class GoodsUnitServiceImpl extends ServiceImpl<TbgoodsunitMapper, TbGoods
         List<TbGoodsUnit> list = baseMapper.selectList(null);
         return list();
     }
+
+    @Override
+    public String getGoodsUnitById(Integer id) {
+        return baseMapper.selectById(id).getName();
+    }
 }

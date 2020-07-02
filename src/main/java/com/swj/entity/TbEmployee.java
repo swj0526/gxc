@@ -29,8 +29,8 @@ import lombok.experimental.Accessors;
 public class TbEmployee implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final Integer STATE_CLOSE=0;
-    public static final Integer STATE_OPEN=1;
+    public static final Boolean STATE_CLOSE=false; //账号未开启
+    public static final Boolean STATE_OPEN=true; //账号已开启
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -49,7 +49,7 @@ public class TbEmployee implements Serializable {
     private Integer departmentId;
 
     @ApiModelProperty(value="账号状态:0未开启,1开启")
-    private Integer state;
+    private Boolean state;
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;

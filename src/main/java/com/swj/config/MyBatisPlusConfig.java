@@ -19,14 +19,11 @@ import org.springframework.context.annotation.Profile;
 @MapperScan("com.swj.mapper")
 @ComponentScan(basePackages = {"com.swj"})
 public class MyBatisPlusConfig {
-
-/*    *//**
-     * 逻辑删除插件
-     *//*
-    @Bean
-    public ISqlInjector sqlInjector() {
-        return new LogicSqlInjector();
-    }*/
+//    //逻辑删除插件
+//    @Bean
+//    public ISqlInjector sqlInjector() {
+//        return new LogicSqlInjector();
+//    }
     /**
      * 分页插件
      */

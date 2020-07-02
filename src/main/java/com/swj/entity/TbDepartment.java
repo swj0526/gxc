@@ -29,6 +29,10 @@ import lombok.experimental.Accessors;
 public class TbDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    //固定部门，必须要有的
+    public static final  Integer DEP_WAREHOUSE=1;//仓库部门
+    public static final  Integer DEP_SALES=2;//销售部门
+    public static final  Integer DEP_BUY=3;//采购部门
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

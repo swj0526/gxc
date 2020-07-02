@@ -71,7 +71,12 @@ public class EmployeeController {
         List<TbEmployee> list = employeeService.getEmployeeList(page, limit, vo);
         return Result.success().listForPage(list, employeeService.getTotal());
     }
-
+    @ApiOperation("查询员工列表,select")
+    @PostMapping("/getSelectList")
+    public Result getSelectList() {
+        List<TbEmployee> list = employeeService.getSelectList();
+        return Result.success().data(list);
+    }
     @ApiOperation("更改密码")
     @PostMapping("/updatePassword")
     public Result updatePassword(String password) {
@@ -82,11 +87,18 @@ public class EmployeeController {
         return Result.error().message("修改密码失败!");
     }
 
-    @ApiOperation("员工账号状态更改,开启之后,可以用手机号跟默认的密码(手机号)登录,关闭之后,账号不可用")
+    @ApiOperation("员工账号状态更改,开启之后,可以用手机号跟默认的密码(手机号)登录,关闭之后,账号不可登陆")
     @PostMapping("/changeState")
-    public Result changeState(Integer state, Integer employeeId) {
-         employeeService.changeState(state, employeeId);
-        return Result.success();
+    public Result changeState(Boolean state, Integer employeeId) {
+        Integer changeState = employeeService.changeState(state, employeeId);
+        return Result.success().data(changeState);
+    }
+
+    @ApiOperation("查询仓库的所有员工，供下拉列表用")
+    @PostMapping("/getWarehouseList")
+    public Result getWarehouseList() {
+        List<TbEmployee> list = employeeService.getWarehouseList();
+        return Result.success().data(list);
     }
 }
 

@@ -71,6 +71,12 @@ public class CustomerController {
     public Result getCustomerById(Integer id){
         return Result.success().data(customerService.getCustomerById(id));
     }
+    @ApiOperation("返回所有的供应商，供给下拉列表使用")
+    @PostMapping("/getSelectList")
+    public Result getSelectList(){
+
+        return Result.success().data(customerService.getSelectList());
+    }
 
 }
 

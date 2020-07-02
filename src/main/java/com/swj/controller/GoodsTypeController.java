@@ -1,6 +1,7 @@
 package com.swj.controller;
 
 
+import com.swj.entity.TbGoodsSpecimen;
 import com.swj.entity.TbGoodsType;
 import com.swj.service.GoodsService;
 import com.swj.service.GoodsTypeService;
@@ -74,6 +75,29 @@ public class GoodsTypeController {
     private Result getGoodsTypeList() {
         List<OneSubject> list = goodsTypeService.getGoodsTypeList();
         return Result.success().data(list);
+    }
+    @ApiOperation("返回列表")
+    @PostMapping("/getList")
+    private Result getList() {
+        List<TbGoodsType> list = goodsTypeService.getList();
+        return Result.success().data(list);
+    }
+
+    @ApiOperation("根据子id，返回父名称")
+    @PostMapping("/getParent")
+    private Result getParent(Integer id) {
+        return Result.success().data(goodsTypeService.getParent(id));
+    }
+    @ApiOperation("根据子id，返回父id")
+    @PostMapping("/getPId")
+    private Result getPId(Integer id) {
+        return Result.success().data(goodsTypeService.getPId(id));
+    }
+    @ApiOperation("根据id查找商品类别,返回name值")
+    @PostMapping("/getNameById")
+    private Result getNameById(Integer id) {
+        TbGoodsType goodsType = goodsTypeService.getGoodsTypeById(id);
+        return Result.success().data(goodsType.getName());
     }
 }
 

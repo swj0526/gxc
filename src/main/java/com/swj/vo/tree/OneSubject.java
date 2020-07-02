@@ -14,6 +14,8 @@ import java.util.List;
     @Data
 public class OneSubject {
     private String id;
-    private String title;
+    private String pId;
+    private String label;
+    private String value;
     private List<TwoSubject> children = new ArrayList<>();
 }

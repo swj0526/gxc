@@ -1,10 +1,12 @@
 package com.swj.util;
 
 
+import com.swj.entity.TbGoodsWarnLog;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -94,4 +96,6 @@ public class Result {
         this.setData(map);
         return this;
     }
+
+
 }

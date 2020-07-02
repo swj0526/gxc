@@ -32,7 +32,7 @@ public class GoodsSpecimenServiceImpl extends ServiceImpl<TbgoodsspecimenMapper,
     public int addGoodsSpecimen(TbGoodsSpecimen goodsSpecimen) {
         String code ="SP"+System.currentTimeMillis();
         goodsSpecimen.setCode(code);
-        goodsSpecimen.setIsEnter(0);
+        goodsSpecimen.setIsEnter(TbGoodsSpecimen.ENTER_NO); //设置状态为未入库
         return baseMapper.insert(goodsSpecimen);
     }
 
@@ -62,7 +62,7 @@ public class GoodsSpecimenServiceImpl extends ServiceImpl<TbgoodsspecimenMapper,
     @Override
     public List<TbGoodsSpecimen> getList(Integer page, Integer limit, TbGoodsSpecimen goodsSpecimen) {
         QueryWrapper<TbGoodsSpecimen> queryWrapper = new QueryWrapper<>();//封装一个条件对象
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
+        queryWrapper.eq("is_enter",TbGoodsSpecimen.ENTER_NO);
         Page pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
         String name = goodsSpecimen.getName();
         String code = goodsSpecimen.getCode();
@@ -97,12 +97,15 @@ public class GoodsSpecimenServiceImpl extends ServiceImpl<TbgoodsspecimenMapper,
      * @param goods
      */
     @Override
-    public void enter(TbGoods goods) {
-       String code =goods.getCode();
+    public void instock(TbGoods goods) {
+        String code =goods.getCode();
         QueryWrapper<TbGoodsSpecimen> queryWrapper = new QueryWrapper<>();//封装一个条件对象
         queryWrapper.eq("code",code);
         TbGoodsSpecimen goodsSpecimen = baseMapper.selectOne(queryWrapper);
-        goodsSpecimen.setIsEnter(1);//入库
+        goodsSpecimen.setIsEnter(TbGoodsSpecimen.ENTER_YES);//商品样品表更改为已入库
+        baseMapper.updateById(goodsSpecimen); //更改商品样品表
+        Integer num = goods.getNum();
+        goods.setInventoryQuantity(num);
         goodsService.addGoods(goods);//商品已入库
     }
 

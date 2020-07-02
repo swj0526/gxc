@@ -27,4 +27,6 @@ public interface CustomerService extends IService<TbCustomer> {
     long getTotal();
 
     TbCustomer getCustomerById(Integer id);
+
+    List<TbCustomer> getSelectList();
 }

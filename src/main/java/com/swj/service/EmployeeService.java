@@ -33,5 +33,9 @@ public interface EmployeeService extends IService<TbEmployee> {
 
     int updatePassword(String password);
 
-    void changeState(Integer state, Integer employeeId);
+    Integer changeState(Boolean state, Integer employeeId);
+
+    List<TbEmployee> getWarehouseList();
+
+    List<TbEmployee> getSelectList();
 }

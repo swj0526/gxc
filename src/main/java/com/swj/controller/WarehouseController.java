@@ -4,6 +4,7 @@ package com.swj.controller;
 import com.swj.entity.TbWarehouse;
 import com.swj.service.WarehouseService;
 import com.swj.util.Result;
+import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +70,16 @@ public class WarehouseController {
 
     @ApiOperation("返回仓库列表,带分页")
     @PostMapping("/getWarehouseList")
-    private Result getWarehouseList(Integer page, Integer limit, @RequestBody TbWarehouse warehouse) {
-      List<TbWarehouse> list= warehouseService.getWarehouseList(page,limit,warehouse);
+    private Result getWarehouseList(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
+      List<TbWarehouse> list= warehouseService.getWarehouseList(page,limit,vo);
       return Result.success().listForPage(list,warehouseService.getTotal());
     }
 
+    @ApiOperation("返回仓库列表，供select使用")
+    @PostMapping("/getSelectList")
+    private Result getSelectList() {
+        List<TbWarehouse> list= warehouseService.getSelectList();
+        return Result.success().data(list);
+    }
 }
 

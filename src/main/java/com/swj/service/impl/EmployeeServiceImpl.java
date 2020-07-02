@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.swj.base.SC;
 import com.swj.entity.TbClient;
+import com.swj.entity.TbDepartment;
 import com.swj.entity.TbEmployee;
 import com.swj.mapper.TbemployeeMapper;
 import com.swj.service.EmployeeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.swj.vo.EmployeeVO;
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
@@ -89,15 +91,35 @@ public class EmployeeServiceImpl extends ServiceImpl<TbemployeeMapper, TbEmploye
     }
 
     @Override
-    public void changeState(Integer state, Integer employeeId) {
+    public List<TbEmployee> getWarehouseList() {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("department_id", TbDepartment.DEP_WAREHOUSE);
+        List<TbEmployee> list = baseMapper.selectList(queryWrapper);
+        return list;
+    }
+
+    @Override
+    public List<TbEmployee> getSelectList() {
+        return baseMapper.selectList(null);
+    }
+
+    @Override
+    public Integer changeState(Boolean state, Integer employeeId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("id", employeeId);
         TbEmployee employee = baseMapper.selectOne(queryWrapper);
-        employee.setState(TbEmployee.STATE_OPEN);//状态更改
-        String password = DigestUtils.md5DigestAsHex((employee.getPhone() + "123456").getBytes());
-        employee.setPassword(password);
-        baseMapper.updateById(employee);
-
+        if(state){ //打开账号
+            employee.setState(TbEmployee.STATE_OPEN);//状态更改
+            String password = DigestUtils.md5DigestAsHex((employee.getPhone() + "123456").getBytes());
+            employee.setPassword(password);
+            baseMapper.updateById(employee);
+            return 1;
+        }else {  //关闭账号
+            employee.setState(TbEmployee.STATE_CLOSE);//状态更改
+            employee.setPassword("");
+            baseMapper.updateById(employee);
+            return 0;
+        }
     }
 
     @Override

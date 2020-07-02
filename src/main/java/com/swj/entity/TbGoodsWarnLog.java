@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 库存异常表(库存下限报警,库存报溢记录表)
+ * 库存异常表(库存下限报警,库存报溢,以及商品损坏的记录表)
  * </p>
  *
  * @author swj
@@ -29,6 +29,9 @@ import lombok.experimental.Accessors;
 public class TbGoodsWarnLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static  final Integer STATE_LOWER=1;//下限报警
+    public static  final Integer STATE_UPPER=2;//上限报警
+    public static  final Integer STATE_ERROR=3;//损坏
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -37,10 +40,16 @@ public class TbGoodsWarnLog implements Serializable {
     @TableField(value = "goods_id")
     private Integer goodsId;
 
+    @TableField(exist = false) //商品编号
+    private String code;
+
+    @TableField(exist = false) //商品名称
+    private String name;
+
     @ApiModelProperty("数量")
     private Integer num;
 
-    @ApiModelProperty("状态:库存下限报警1,库存报溢2")
+    @ApiModelProperty("状态:库存下限报警1,库存报溢2,商品损坏3")
     private Integer state;
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")

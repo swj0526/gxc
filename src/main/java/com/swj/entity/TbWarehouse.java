@@ -40,10 +40,14 @@ public class TbWarehouse implements Serializable {
     private String address;
 
     @ApiModelProperty("仓库负责人")
+    @TableField(value = "emp_id")
     private Integer empId;
 
+    @TableField(exist = false) //非数据数据库字段
+    private String phone;//负责人联系方式，只供给前台使用
+
     @TableField(fill = FieldFill.INSERT, value = "create_time")
-    private Timestamp creatTime;
+    private Timestamp createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE, value = "update_time")
     private Timestamp updateTime;

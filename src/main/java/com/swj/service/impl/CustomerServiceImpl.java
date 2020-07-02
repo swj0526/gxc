@@ -81,4 +81,9 @@ private long total;
     public TbCustomer getCustomerById(Integer id) {
         return baseMapper.selectById(id);
     }
+
+    @Override
+    public List<TbCustomer> getSelectList() {
+        return baseMapper.selectList(null);
+    }
 }

@@ -24,7 +24,8 @@ import java.sql.Timestamp;
 public class TbGoodsSpecimen implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    public  static  final  Integer ENTER_NO =0; //商品未入库的状态
+    public  static  final  Integer ENTER_YES =1; //商品已入库的状态
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
@@ -47,12 +48,11 @@ public class TbGoodsSpecimen implements Serializable {
 
     @ApiModelProperty("采购价格")
     @TableField(value = "purchasing_price")
-    private BigDecimal purchasingPrice;
+    private BigDecimal purchasingPrice ;
 
-    @ApiModelProperty("出售价格")
-    @TableField(value = "selling_price")
-    private BigDecimal sellingPrice;
-
+    public void setPurchasingPrice(BigDecimal purchasingPrice) {
+        this.purchasingPrice = purchasingPrice.setScale(2);
+    }
 
     @ApiModelProperty("生产产商id")
     @TableField(value = "customer_id")
@@ -67,8 +67,11 @@ public class TbGoodsSpecimen implements Serializable {
 
     @TableField(fill = FieldFill.INSERT_UPDATE,value = "update_time")
     private Timestamp updateTime;
-    @TableLogic  //逻辑删除注解
+
+    @TableLogic
+    @ApiModelProperty(value = "是否删除")
     private Integer del;
+
     @ApiModelProperty("备注")
     private String remark;
 

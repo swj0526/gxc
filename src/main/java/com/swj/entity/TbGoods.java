@@ -65,6 +65,11 @@ public class TbGoods implements Serializable {
     @TableField(value = "inventory_quantity")
     private Integer inventoryQuantity;
 
+
+    @TableField(exist = false) //入库数量，非数据库字段
+    private Integer num;
+
+
     @ApiModelProperty("销售总数")
     @TableField(value = "sell_total")
     private Integer sellTotal;

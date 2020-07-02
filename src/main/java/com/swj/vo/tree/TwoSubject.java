@@ -11,5 +11,7 @@ import lombok.Data;
     @Data
 public class TwoSubject {
     private String id;
-    private String title;
+    private String pId;
+    private String value;
+    private String label;
 }

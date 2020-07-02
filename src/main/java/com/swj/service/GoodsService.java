@@ -2,6 +2,7 @@ package com.swj.service;
 
 import com.swj.entity.TbGoods;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.swj.vo.ConditionalVO;
 import com.swj.vo.GoodsVO;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public interface GoodsService extends IService<TbGoods> {
 
     int updateGoods(TbGoods goods);
 
+    int updateGoodsByWarn(TbGoods goods);
+
     TbGoods getGoodsById(Integer id);
 
     int deleteGoods(Integer id);
 
-    List<TbGoods> getList(Integer page, Integer limit, GoodsVO goods);
+    List<TbGoods> getList(Integer page, Integer limit, ConditionalVO vo);
 
     long getTotal();
 

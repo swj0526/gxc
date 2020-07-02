@@ -2,6 +2,7 @@ package com.swj.service;
 
 import com.swj.entity.TbWarehouse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.swj.vo.ConditionalVO;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public interface WarehouseService extends IService<TbWarehouse> {
 
     long getTotal();
 
-    List<TbWarehouse> getWarehouseList(Integer page, Integer limit, TbWarehouse warehouse);
+    List<TbWarehouse> getWarehouseList(Integer page, Integer limit, ConditionalVO vo);
 
+    List<TbWarehouse> getSelectList();
 }

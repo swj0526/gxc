@@ -4,6 +4,7 @@ package com.swj.controller;
 import com.swj.entity.TbGoods;
 import com.swj.service.GoodsService;
 import com.swj.util.Result;
+import com.swj.vo.ConditionalVO;
 import com.swj.vo.GoodsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -66,8 +67,8 @@ public class GoodsController {
     }
     @PostMapping("/getList" )
     @ApiOperation("商品列表,分页")
-    public Result getList(Integer page, Integer limit, @RequestBody GoodsVO goods){
-        List<TbGoods> list = goodsService.getList(page, limit, goods);
+    public Result getList(Integer page, Integer limit, @RequestBody ConditionalVO vo){
+        List<TbGoods> list = goodsService.getList(page, limit, vo);
         return Result.success().listForPage(list, goodsService.getTotal());
     }
 }

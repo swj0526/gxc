@@ -28,5 +28,5 @@ public interface GoodsSpecimenService extends IService<TbGoodsSpecimen> {
 
     long getTotal();
 
-    void enter(TbGoods goods);
+    void instock(TbGoods goods);
 }
