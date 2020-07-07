@@ -1,0 +1,61 @@
+2020-07-03 02:24:46.082 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h39m9s786ms).
+2020-07-03 06:01:01.131 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h36m15s88ms).
+2020-07-03 09:03:13.762 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h2m12s638ms).
+2020-07-03 10:52:29.047 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h49m15s282ms).
+2020-07-03 11:37:52.790 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m23s745ms).
+2020-07-03 13:41:38.156 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h3m45s366ms).
+2020-07-03 16:40:05.247 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 16:40:07.610 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 16:40:07.628 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 16:55:54.145 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 16:55:56.207 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 16:55:56.219 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.Integer,java.lang.Integer>
+2020-07-03 16:55:56.228 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:06:58.235 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 17:07:00.192 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:07:00.203 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:07:00.213 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:08:38.453 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 17:08:40.420 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:08:40.438 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:20:16.017 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 17:20:17.961 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:20:17.982 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:52:38.958 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 17:52:40.960 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 17:52:40.989 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 18:27:58.724 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 18:28:00.783 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 18:28:00.805 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 19:17:32.540 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46m23s431ms).
+2020-07-03 20:14:53.064 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51m20s31ms).
+2020-07-03 20:26:20.235 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 20:26:22.520 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 20:26:22.542 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 21:05:43.160 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 21:05:45.225 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 21:05:45.248 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 21:30:01.595 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 21:30:03.820 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 21:30:03.844 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 21:37:14.829 [http-nio-80-exec-4] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.swj.util.Result com.swj.controller.GoodsController.getList(java.lang.Integer,java.lang.Integer,com.swj.vo.ConditionalVO)]
+2020-07-03 21:38:14.519 [http-nio-80-exec-6] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.swj.util.Result com.swj.controller.GoodsController.getList(java.lang.Integer,java.lang.Integer,com.swj.vo.ConditionalVO)]
+2020-07-03 22:06:22.233 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m56s407ms).
+2020-07-03 22:26:56.722 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 22:26:58.748 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 22:26:58.773 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 22:28:54.508 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 22:28:56.486 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 22:28:56.508 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:11:24.243 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 23:11:26.458 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:11:26.487 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:13:52.169 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 23:13:54.413 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:13:54.434 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:23:42.214 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 23:23:44.155 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:23:44.177 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:27:38.158 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
+2020-07-03 23:27:40.257 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
+2020-07-03 23:27:40.292 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
