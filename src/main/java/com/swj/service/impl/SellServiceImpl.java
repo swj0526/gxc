@@ -1,19 +1,22 @@
 package com.swj.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.swj.entity.TbGoods;
 import com.swj.entity.TbPurchase;
 import com.swj.entity.TbSell;
-import com.swj.entity.TbSellDetalis;
 import com.swj.mapper.TbsellMapper;
 import com.swj.service.GoodsService;
 import com.swj.service.SellDetalisService;
 import com.swj.service.SellService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.swj.vo.ConditionalVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,27 +34,19 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
     private GoodsService goodsService;
     @Autowired
     private SellDetalisService detalisService;
+    private String end;
+    private String keywords;
 
     @Override
     public int addSell(TbSell sell) {
-        sell.setCode("XSD" + System.currentTimeMillis());
-        sell.setIsRead(0); //销售单生成之后未审核状态为0
-        int i = baseMapper.insert(sell);
-        //拆分销售单的id列表
-        String idList = sell.getIdList();
-        String numList = sell.getNumList();
-        String[] splitId = idList.split(",");
-        String[] splitNum = numList.split(",");
-        for (int j = 0; j < splitId.length; j++) {
-            TbGoods goods = goodsService.getGoodsById(Integer.parseInt(splitId[j]));
-            detalisService.addSellDetalis(sell.getId(), Integer.parseInt(splitNum[j]), goods);
-        }
-        return i;
+       sell.setIsRead(TbSell.STATE_DEFAULT);
+        return  baseMapper.insert(sell);
+
     }
 
     @Override
     public int updateSell(TbSell sell) {
-        return 0;
+        return baseMapper.updateById(sell);
     }
 
     @Override
@@ -65,20 +60,62 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
     }
 
     @Override
-    public List<TbSell> getSellList(Integer page, Integer limit, TbSell sell) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
+    public List<TbSell> getSellList(Integer page, Integer limit, ConditionalVO vo) {
+        QueryWrapper<TbSell> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");
         Page<TbSell> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
-        //todo 具体的查询条件在定
-       /* if (!StringUtils.isEmpty(begin)) {
+        String keywords = vo.getKeywords();
+        String begin = vo.getBegin();
+        String  end =   vo.getEnd();
+        List<Integer> rlist = new ArrayList<>();
+        rlist.add(TbSell.STATE_DEFAULT);
+        rlist.add(TbSell.STATE_OUT);
+        rlist.add(TbSell.STATE_SEND);
+        queryWrapper.in("is_read", rlist);
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).
+                    or().like("code", keywords)
+                    .or().like("model", keywords);
+        }
+       if (!StringUtils.isEmpty(begin)) {
             queryWrapper.ge(" create_time", begin);
         }
-
         if (!StringUtils.isEmpty(end)) {
             queryWrapper.le("create_time", end);
-        }*/
-        //降序排列,为了让新增的显示在前面方便查看
+        }
+        baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
+        List<TbSell> list = pageParam.getRecords();//数据
+        total = pageParam.getTotal();
+        return list;
+    }
+
+    /**
+     * 历史销售单的展示
+     * @param page
+     * @param limit
+     * @param vo
+     * @return
+     */
+    @Override
+    public List<TbSell> getSellListEnd(Integer page, Integer limit, ConditionalVO vo) {
+        QueryWrapper<TbSell> queryWrapper = new QueryWrapper();
         queryWrapper.orderByDesc("create_time");
+        Page<TbSell> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
+        String keywords = vo.getKeywords();
+        String begin = vo.getBegin();
+        String  end =   vo.getEnd();
+        queryWrapper.in("is_read", TbSell.STATE_END);
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).
+                    or().like("code", keywords)
+                    .or().like("model", keywords);
+        }
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge(" create_time", begin);
+        }
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("create_time", end);
+        }
         baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
         List<TbSell> list = pageParam.getRecords();//数据
         total = pageParam.getTotal();

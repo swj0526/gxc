@@ -31,9 +31,10 @@ import lombok.experimental.Accessors;
 public class TbPurchase implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final int STATE_DEFAULT=0;//采购单生成,仓库员未审批
-    public static final int STATE_READ=1;//仓库已审批,采购员未阅读
-    public static final int STATE_END=2;//采购员阅读完,整个订单结束
+    public static final int STATE_DEFAULT=1;//仓库申请采购，生成了采购单，采购员未阅读
+    public static final int STATE_READ=2;//采购员已阅读，（采购中）并按照采购单进行采购
+    public static final int STATE_INTO=3;//采购员采购完成，仓库人员正在盘点入库（入库中）
+    public static final int STATE_END=4;//仓库人员完成入库，如有不合格的将会反馈
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
@@ -48,7 +49,7 @@ public class TbPurchase implements Serializable {
     @TableField(value = "num_list")
     private String numList;
 
-    @ApiModelProperty("商品总金额")
+    @ApiModelProperty("总金额")
     private BigDecimal sum;
 
     @ApiModelProperty("实付金额")
@@ -57,7 +58,7 @@ public class TbPurchase implements Serializable {
     @ApiModelProperty("付款状态 0:未付款 1:付部分款 2:已付清")
     private Integer state;
 
-    @ApiModelProperty("是否阅读,0:采购单生成,仓库员未审批,1:仓库已审批,采购员未阅读2:采购员阅读完,整个订单结束")
+    @ApiModelProperty("是否阅读")
     @TableField(value = "is_read")
     private Integer isRead;
 

@@ -1,8 +1,10 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbEmployee;
 import com.swj.service.EmployeeService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.EmployeeVO;
 import io.swagger.annotations.Api;
@@ -30,6 +32,7 @@ public class EmployeeController {
 
     @ApiOperation("新增员工")
     @PostMapping("/addEmployee")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增员工")
     public Result addEmployee(@RequestBody TbEmployee employee) {
         int i = employeeService.addEmployee(employee);
         if (i == 1) {
@@ -40,6 +43,7 @@ public class EmployeeController {
 
     @ApiOperation("修改员工")
     @PostMapping("/updateEmployee")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改员工")
     public Result updateEmployee(@RequestBody TbEmployee employee) {
         int i = employeeService.updateEmployee(employee);
         if (i == 1) {
@@ -50,6 +54,7 @@ public class EmployeeController {
 
     @ApiOperation("删除员工")
     @PostMapping("/deleteEmployee")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除员工")
     public Result deleteEmployee(Integer id) {
         int i = employeeService.deleteEmployee(id);
         if (i == 1) {

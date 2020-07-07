@@ -3,6 +3,7 @@ package com.swj.service;
 import com.swj.entity.TbSell;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.swj.entity.TbSellDetalis;
+import com.swj.vo.ConditionalVO;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface SellService extends IService<TbSell> {
 
     TbSell getSellById(Integer id);
 
-    List<TbSell> getSellList(Integer page, Integer limit, TbSell sell);
+    List<TbSell> getSellList(Integer page, Integer limit, ConditionalVO vo);
 
     long getTotal();
 
@@ -33,4 +34,6 @@ public interface SellService extends IService<TbSell> {
     List<TbSell> getSellListByState(Integer page, Integer limit, Integer state);
 
     int endSellById(Integer sellId, int stateEnd);
+
+    List<TbSell> getSellListEnd(Integer page, Integer limit, ConditionalVO vo);
 }

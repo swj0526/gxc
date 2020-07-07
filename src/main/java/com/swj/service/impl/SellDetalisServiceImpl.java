@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.swj.entity.*;
 import com.swj.mapper.TbselldetalisMapper;
+import com.swj.service.GoodsService;
 import com.swj.service.SellDetalisService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.swj.service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +26,12 @@ import java.util.Map;
 @Service
 public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbSellDetalis> implements SellDetalisService {
  private long total;
-    @Autowired
+
+ @Autowired
  private SellService sellService;
+
+ @Autowired
+ private GoodsService goodsService;
 
 
 
@@ -35,7 +41,7 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
     }
 
     @Override
-    public  List<TbSellDetalis> getDetalisBySellId(Integer page, Integer limit,Integer sellId) {
+    public  List<TbSellDetalis> getDetailsBySellId(Integer page, Integer limit,Integer sellId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("sell_id",sellId);
         queryWrapper.orderByAsc("create_time");//条件按照升序排序
@@ -50,7 +56,7 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
 
     @Override
     public void checkGoods(Integer page, Integer limit,Integer sellId, Map<String, Integer> map) {
-        List<TbSellDetalis> list = getDetalisBySellId(page,limit,sellId);
+        List<TbSellDetalis> list = getDetailsBySellId(page,limit,sellId);
         //遍历更改所有销售商品详情的出库状态,
         for (TbSellDetalis detalis : list) {
             Integer id = detalis.getId();
@@ -60,7 +66,7 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
     }
 
     @Override
-    public int addSellDetalis(Integer sellId, int num, TbGoods goods) {
+    public int addSellDetails(Integer sellId, int num, TbGoods goods) {
         TbSellDetalis detalis = new TbSellDetalis();
         detalis.setSellId(sellId);
         detalis.setNum(num);
@@ -72,5 +78,42 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
         detalis.setIsEnter(0);
       return   baseMapper.insert(detalis);
 
+    }
+
+    @Override
+    public int addDetails(String idList, String numList) {
+        //先拆分ID
+        String[] ids = idList.split(",");
+        String[] nums = numList.split(",");
+        //生成采购单的一些基本信息
+        TbSell sell = new TbSell();
+        sell.setCode("XSD" + System.currentTimeMillis());
+        sell.setIdList(idList);
+        sell.setNumList(numList);
+        sellService.addSell(sell);
+        BigDecimal moeny = new BigDecimal(0);
+        for (int j = 0; j < ids.length; j++) {
+            TbGoods goods = goodsService.getGoodsById(Integer.parseInt(ids[j]));
+            TbSellDetalis detalis = new TbSellDetalis();
+            detalis.setCode(goods.getCode());
+            detalis.setModel(goods.getModel());
+            detalis.setNum(Integer.parseInt(nums[j]));
+            detalis.setName(goods.getName());
+            detalis.setPurchasingPrice(goods.getPurchasingPrice());
+            detalis.setSellingPrice(goods.getSellingPrice());
+            detalis.setSum(goods.getSellingPrice().multiply(new BigDecimal(detalis.getNum())));
+            detalis.setIsEnter(TbPurchaseDetalis.ENTER_NO);
+            detalis.setSellId(sell.getId());
+            moeny = moeny.add(detalis.getSum());
+            baseMapper.insert(detalis);
+        }
+        sell.setSum(moeny.setScale(2));
+        sellService.updateSell(sell);
+        return 1;
+    }
+
+    @Override
+    public int updateDetails(String idList, String numList, Integer purchaseId) {
+        return 0;
     }
 }

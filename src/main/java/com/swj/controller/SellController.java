@@ -1,12 +1,15 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbPurchase;
 import com.swj.entity.TbSell;
 import com.swj.entity.TbSellDetalis;
 import com.swj.service.SellDetalisService;
 import com.swj.service.SellService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
+import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +39,7 @@ public class SellController {
 
     @PostMapping("/addSell")
     @ApiOperation("添加销售单")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加销售单")
     public Result addSell(@RequestBody TbSell sell) {
         int i = sellService.addSell(sell);
         if (i == 1) {
@@ -46,6 +50,7 @@ public class SellController {
 
     @PostMapping("/updateSell")
     @ApiOperation("修改销售单")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改销售单")
     public Result updateSell(@RequestBody TbSell sell) {
         int i = sellService.updateSell(sell);
         if (i == 1) {
@@ -55,7 +60,8 @@ public class SellController {
     }
 
     @PostMapping("/deleteSell")
-    @ApiOperation("修改销售单")
+    @ApiOperation("删除销售单")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除销售单")
     public Result deleteSell(Integer id) {
         int i = sellService.deleteSell(id);
         if (i == 1) {
@@ -73,13 +79,25 @@ public class SellController {
 
     @PostMapping("/getSellList")
     @ApiOperation("销售单列表,分页")
-    public Result getSellList(Integer page, Integer limit, TbSell sell) {
-        List<TbSell> list = sellService.getSellList(page, limit, sell);
+    public Result getSellList(Integer page, Integer limit,@RequestBody ConditionalVO vo) {
+        List<TbSell> list = sellService.getSellList(page, limit, vo);
         return Result.success().listForPage(list, sellService.getTotal());
     }
 
+
+
+    @ApiOperation("已完成销售单,分页")
+    @PostMapping("/getSellListEnd")
+    public Result getSellListEnd(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
+        List<TbSell> sellList = sellService.getSellListEnd(page, limit, vo);
+        return Result.success().listForPage(sellList, sellService.getTotal());
+    }
+
+
+
     @ApiOperation("/仓库人员查看销售单,并阅读销售单,将销售商品出库")
     @PostMapping("/checkGoods")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="商品出库")
     public Result checkGoods(Integer page, Integer limit, Integer sellId, Map<String, Integer> map) {
         detalisService.checkGoods(page, limit, sellId, map);
         return Result.success();
@@ -94,6 +112,7 @@ public class SellController {
 
     @ApiOperation("/销售人员最后确认订单,整个订单完成")
     @PostMapping("/endSellById")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="销售单完成")
     public Result endSellById(Integer sellId) {
         int i = sellService.endSellById(sellId, TbSell.STATE_END);
         if (i == 1) {

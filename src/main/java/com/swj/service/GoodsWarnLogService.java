@@ -21,4 +21,5 @@ public interface GoodsWarnLogService extends IService<TbGoodsWarnLog> {
     List<TbGoodsWarnLog> getGoodsWarnLogList(Integer page, Integer limit, ConditionalVO vo);
 
     long getTotal();
+
 }

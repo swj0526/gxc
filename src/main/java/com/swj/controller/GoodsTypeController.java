@@ -1,10 +1,12 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbGoodsSpecimen;
 import com.swj.entity.TbGoodsType;
 import com.swj.service.GoodsService;
 import com.swj.service.GoodsTypeService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.tree.OneSubject;
 import io.swagger.annotations.Api;
@@ -34,6 +36,7 @@ public class GoodsTypeController {
 
     @ApiOperation("新增商品类别")
     @PostMapping("/addGoodsType")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增商品类别")
     private Result addGoodsType(@RequestBody TbGoodsType goodsType) {
         int i = goodsTypeService.addGoodsType(goodsType);
         if (i == 1) {
@@ -44,6 +47,7 @@ public class GoodsTypeController {
 
     @ApiOperation("修改商品类别")
     @PostMapping("/updateGoodsType")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改商品类别")
     private Result updateGoodsType(@RequestBody TbGoodsType goodsType) {
         int i = goodsTypeService.updateGoodsType(goodsType);
         if (i == 1) {
@@ -54,6 +58,7 @@ public class GoodsTypeController {
 
     @ApiOperation("删除商品类别")
     @PostMapping("/deleteGoodsType")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除商品类别")
     private Result deleteGoodsType(Integer id) {
         int i = goodsTypeService.deleteGoodsType(id);
         if (i == 1) {

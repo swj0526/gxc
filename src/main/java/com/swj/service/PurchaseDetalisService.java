@@ -17,11 +17,16 @@ import java.util.Map;
  */
 public interface PurchaseDetalisService extends IService<TbPurchaseDetalis> {
 
-    void  addPurchaseDetalis(Integer purchaseId,Integer num, TbGoods goods);
 
     void checkGoods(Integer page, Integer limit,Integer purchaseId, Map<String,Integer> map);
 
     long getTotal();
 
-    List<TbPurchaseDetalis> getDetalisByPurchaseId(Integer page,Integer limit,Integer purchaseId);
+    List<TbPurchaseDetalis> getDetailsByPurchaseId(Integer page, Integer limit, Integer purchaseId);
+
+    void deleteDetailsListByPurchaseId( Integer purchaseId);
+
+    int addDetails(String idList,String numList);
+
+    int updateDetails(String idList, String numList,Integer purchaseId);
 }

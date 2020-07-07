@@ -1,9 +1,11 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbGoodsWarnLog;
 import com.swj.service.GoodsService;
 import com.swj.service.GoodsWarnLogService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
@@ -31,6 +33,7 @@ public class GoodsWarnLogController {
 
     @PostMapping("/addGoodsWarnLog")
     @ApiOperation("新增商品的异常记录")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加商品异常")
     public Result addGoodsWarnLog(@RequestBody TbGoodsWarnLog goodsWarnLog) {
       int i=  goodsWarnLogService.addGoodsWarnLog(goodsWarnLog);
         if (i == 1) {

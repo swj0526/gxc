@@ -1,7 +1,9 @@
 package com.swj.controller;
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbGoodsInAndOut;
 import com.swj.service.GoodsInAndOutService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
@@ -15,12 +17,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/goodsInAndOut")
 @CrossOrigin
-public class TbGoodsInAndOutController {
+public class GoodsInAndOutController {
     @Autowired
     private GoodsInAndOutService goodsInAndOutService;
 
     @PostMapping("/addGoodsInAndOut")
     @ApiOperation("添加商品进出库的记录")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加商品进出库记录")
     public Result addGoodsInAndOut(TbGoodsInAndOut goodsInAndOut) {
         int i = goodsInAndOutService.addGoodsInAndOut(goodsInAndOut);
         if (i == 1) {

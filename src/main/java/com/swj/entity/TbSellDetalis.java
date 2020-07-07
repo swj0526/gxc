@@ -31,6 +31,8 @@ import lombok.experimental.Accessors;
 public class TbSellDetalis implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static  final Integer ENTER_NO =0; //未入库
+    public static  final Integer ENTER_YES =1; //已入库
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -54,6 +56,10 @@ public class TbSellDetalis implements Serializable {
     @ApiModelProperty("出售价格")
     @TableField(value = "selling_price")
     private BigDecimal sellingPrice;
+
+    @ApiModelProperty("单项总价")
+    @TableField(value = "sum")
+    private BigDecimal sum;
 
     @ApiModelProperty("销售单id")
     @TableField(value = "sell_id")

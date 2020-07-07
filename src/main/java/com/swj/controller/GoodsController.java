@@ -1,8 +1,10 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbGoods;
 import com.swj.service.GoodsService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import com.swj.vo.GoodsVO;
@@ -33,6 +35,7 @@ public class GoodsController {
 
     @PostMapping("/addGoods")
     @ApiOperation("添加商品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加商品")
     public Result addGoods(@RequestBody TbGoods goods){
         int i = goodsService.addGoods(goods);
         if(i==1){
@@ -42,6 +45,7 @@ public class GoodsController {
     }
     @PostMapping("/updateGoods")
     @ApiOperation("修改商品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改商品")
     public Result updateGoods(@RequestBody TbGoods goods){
         int i =  goodsService.updateGoods(goods);
         if(i==1){
@@ -58,6 +62,7 @@ public class GoodsController {
     }
     @PostMapping("/deleteGoods")
     @ApiOperation("删除商品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="删除商品")
     public Result deleteGoods(Integer id){
       int i =goodsService.deleteGoods(id);
         if(i==1){

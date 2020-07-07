@@ -25,6 +25,8 @@ public interface DepartmentService extends IService<TbDepartment> {
     TbDepartment getDepartmentById(Integer id);
 
     List<TbDepartment> getDepartmentList(Integer page, Integer limit, ConditionalVO vo);
+
     List<TbDepartment> getSelectList();
+
     long getTotal();
 }

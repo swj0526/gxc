@@ -1,9 +1,11 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbGoods;
 import com.swj.entity.TbGoodsSpecimen;
 import com.swj.service.GoodsSpecimenService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.GoodsVO;
 import io.swagger.annotations.Api;
@@ -31,6 +33,7 @@ public class GoodsSpecimenController {
 
     @PostMapping("/addGoodsSpecimen")
     @ApiOperation("添加商品样品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加商品样品")
     public Result addGoodsSpecimen(@RequestBody TbGoodsSpecimen goodsSpecimen){
         int i = goodsSpecimenService.addGoodsSpecimen(goodsSpecimen);
         if(i==1){
@@ -40,6 +43,7 @@ public class GoodsSpecimenController {
     }
     @PostMapping("/updateGoodsSpecimen")
     @ApiOperation("修改商品样品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改商品样品")
     public Result updateGoodsSpecimen(@RequestBody TbGoodsSpecimen goodsSpecimen){
         int i =  goodsSpecimenService.updateGoodsSpecimen(goodsSpecimen);
         if(i==1){
@@ -56,6 +60,7 @@ public class GoodsSpecimenController {
     }
     @PostMapping("/deleteGoodsSpecimen")
     @ApiOperation("删除商品样品")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除商品样品")
     public Result deleteGoodsSpecimen(Integer id){
         int i =goodsSpecimenService.deleteGoodsSpecimen(id);
         if(i==1){
@@ -72,6 +77,7 @@ public class GoodsSpecimenController {
 
     @PostMapping("/instock")
     @ApiOperation("商品样品入库")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="商品入库")
     public Result instock(@RequestBody TbGoods goods){
         goodsSpecimenService.instock(goods);
         return Result.success();

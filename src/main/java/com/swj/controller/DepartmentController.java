@@ -1,8 +1,10 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbDepartment;
 import com.swj.service.DepartmentService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
@@ -30,6 +32,7 @@ public class DepartmentController {
 
     @ApiOperation("新增部门")
     @PostMapping("/addDepartment")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增部门")
     private Result addDepartment(@RequestBody TbDepartment department){
         int i= departmentService.addDepartment(department);
         if (i == 1) {
@@ -39,6 +42,7 @@ public class DepartmentController {
     }
     @ApiOperation("修改部门")
     @PostMapping("/updateDepartment")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改部门")
     private Result updateDepartment(@RequestBody TbDepartment department){
         int i= departmentService.updateDepartment(department);
         if (i == 1) {
@@ -49,6 +53,7 @@ public class DepartmentController {
 
     @ApiOperation("删除部门")
     @PostMapping("/deleteDepartment")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除部门")
     private Result deleteDepartment(Integer id){
         int i= departmentService.deleteDepartment(id);
         if (i == 1) {

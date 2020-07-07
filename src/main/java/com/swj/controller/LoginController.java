@@ -1,6 +1,8 @@
 package com.swj.controller;
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.base.SC;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +25,7 @@ public class LoginController {
     private HttpSession session;
     @ApiOperation("登录")
     @PostMapping("/checkLogin")
+    @LogAnnotation(operationType= LogOperateTypeEnum.LOGIN,operateContent="登陆")
     public Result checkLogin(String username, String password) {
         String phone ="18653525596";
         session.setAttribute("phone",phone);

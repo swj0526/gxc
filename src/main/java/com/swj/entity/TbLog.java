@@ -33,7 +33,7 @@ public class TbLog implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty("操作类型 :1.添加2删除3.修改,4,查询")
+    @ApiModelProperty("操作类型 :1.添加2修改3.删除,4,登陆")
     private String state;
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")
@@ -52,6 +52,12 @@ public class TbLog implements Serializable {
     @ApiModelProperty("操作人")
     @TableField(fill = FieldFill.INSERT_UPDATE,value = "operator_id")
     private Integer operatorId;
+
+    @ApiModelProperty("操作人名称")
+    private String name;
+
+    @ApiModelProperty("ip")
+    private String ip;
 
 
 }

@@ -2,6 +2,7 @@ package com.swj.service;
 
 import com.swj.entity.TbPurchase;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.swj.vo.ConditionalVO;
 import io.swagger.models.auth.In;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public interface PurchaseService extends IService<TbPurchase> {
 
     TbPurchase getPurchaseById(Integer id);
 
-    List<TbPurchase> getPurchaseList(Integer page, Integer limit, TbPurchase purchase);
+    List<TbPurchase> getPurchaseList(Integer page, Integer limit, ConditionalVO vo);
 
     long getTotal();
 
@@ -34,4 +35,6 @@ public interface PurchaseService extends IService<TbPurchase> {
     List<TbPurchase> getPurchaseListByState(Integer page, Integer limit, Integer state);
 
     int endPurchaseById(Integer purchaseId, int stateEnd);
+
+    List<TbPurchase> getPurchaseListEnd(Integer page, Integer limit, ConditionalVO vo);
 }

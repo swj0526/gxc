@@ -1,8 +1,10 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbWarehouse;
 import com.swj.service.WarehouseService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
@@ -30,6 +32,7 @@ public class WarehouseController {
 
     @ApiOperation("新增仓库")
     @PostMapping("/addWarehouse")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增仓库")
     private Result addWarehouse(@RequestBody TbWarehouse warehouse) {
         int i = warehouseService.addWarehouse(warehouse);
         if (i == 1) {
@@ -40,6 +43,7 @@ public class WarehouseController {
 
     @ApiOperation("修改仓库")
     @PostMapping("/updateWarehouse")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改仓库")
     private Result updateWarehouse(@RequestBody TbWarehouse warehouse) {
         int i = warehouseService.updateWarehouse(warehouse);
         if (i == 1) {
@@ -50,6 +54,7 @@ public class WarehouseController {
 
     @ApiOperation("删除仓库")
     @PostMapping("/deleteWarehouse")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除仓库")
     private Result deleteWarehouse(Integer id) {
         int i = warehouseService.deleteWarehouse(id);
         if (i == 1) {

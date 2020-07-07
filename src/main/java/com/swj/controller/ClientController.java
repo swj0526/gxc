@@ -1,8 +1,10 @@
 package com.swj.controller;
 
 
+import com.swj.annotation.LogAnnotation;
 import com.swj.entity.TbClient;
 import com.swj.service.ClientService;
+import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import com.swj.vo.GoodsVO;
@@ -31,6 +33,7 @@ public class ClientController {
 
     @PostMapping("/addClient")
     @ApiOperation("添加客户")
+    @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加客户")
     public Result addClient(@RequestBody TbClient client) {
         int i = clientService.addClient(client);
         if (i == 1) {
@@ -41,6 +44,7 @@ public class ClientController {
 
     @PostMapping("/updateClient")
     @ApiOperation("修改客户")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改客户")
     public Result updateClient(@RequestBody TbClient client) {
         int i = clientService.updateClient(client);
         if (i == 1) {
@@ -51,6 +55,7 @@ public class ClientController {
 
     @PostMapping("/deleteClient")
     @ApiOperation("删除客户")
+    @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除客户")
     public Result deleteClient(Integer id) {
         int i = clientService.deleteClient(id);
         if (i == 1) {

@@ -29,9 +29,10 @@ import lombok.experimental.Accessors;
 public class TbSell implements Serializable {
 
     private static final long serialVersionUID=1L;
-    public static final int STATE_DEFAULT=0;//销售单生成,仓库员未审批
-    public static final int STATE_READ=1;//仓库已审批,销售员未阅读
-    public static final int STATE_END=2;//销售员阅读完,整个订单结束
+    public static final int STATE_DEFAULT=1;//销售单申请,仓库员为阅读
+    public static final int STATE_OUT=2;//仓库已阅读,按照销售单出货
+    public static final int STATE_SEND=3;//货已出，正在配送给客户
+    public static final int STATE_END=4;//客户收货，订单完成
 
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -64,6 +65,7 @@ public class TbSell implements Serializable {
     @ApiModelProperty("是否阅读,0:销售单生成,仓库员未审批,1:仓库已审批,销售员未阅读2:销售员阅读完,整个订单结束")
     @TableField(value = "is_read")
     private Integer isRead;
+
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;

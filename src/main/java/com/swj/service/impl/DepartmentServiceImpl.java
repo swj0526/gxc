@@ -62,7 +62,9 @@ public class DepartmentServiceImpl extends ServiceImpl<TbdepartmentMapper, TbDep
 
     @Override
     public List<TbDepartment> getSelectList() {
+
         List<TbDepartment> list = baseMapper.selectList(null);
+
         return list;
     }
 

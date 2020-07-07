@@ -3,7 +3,6 @@ package com.swj.service;
 import com.swj.entity.TbGoods;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.swj.vo.ConditionalVO;
-import com.swj.vo.GoodsVO;
 
 import java.util.List;
 
@@ -32,4 +31,6 @@ public interface GoodsService extends IService<TbGoods> {
     long getTotal();
 
     boolean exist(Integer warehouseId);
+
+    void checkInventory();
 }

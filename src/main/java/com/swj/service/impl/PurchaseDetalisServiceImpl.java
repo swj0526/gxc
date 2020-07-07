@@ -6,13 +6,14 @@ import com.swj.entity.TbGoods;
 import com.swj.entity.TbPurchase;
 import com.swj.entity.TbPurchaseDetalis;
 import com.swj.mapper.TbpurchasedetalisMapper;
+import com.swj.service.GoodsService;
 import com.swj.service.PurchaseDetalisService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.swj.service.PurchaseService;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -29,21 +30,11 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
     private long total;
     @Autowired
     private PurchaseService purchaseService;
+    @Autowired
+    private GoodsService goodsService;
 
 
-    @Override
-    public void addPurchaseDetalis(Integer purchaseId, Integer num, TbGoods goods) {
-        TbPurchaseDetalis detalis = new TbPurchaseDetalis();
-        detalis.setPurchaseId(purchaseId);
-        detalis.setNum(num);
-        detalis.setCode(goods.getCode());
-        detalis.setName(goods.getName());
-        detalis.setModel(goods.getModel());
-        detalis.setPurchasingPrice(goods.getPurchasingPrice());
-        detalis.setSellingPrice(goods.getSellingPrice());
-        detalis.setIsEnter(0);
-        baseMapper.insert(detalis);
-    }
+
 
     @Override
     public long getTotal() {
@@ -51,14 +42,72 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
     }
 
     @Override
-    public List<TbPurchaseDetalis> getDetalisByPurchaseId(Integer page,Integer limit,Integer purchaseId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
-        Page pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
+    public int updateDetails(String idList, String numList,Integer purchaseId) {
+        //先拆分ID
+        String[] ids = idList.split(",");
+        String[] nums = numList.split(",");
+        BigDecimal moeny = new BigDecimal(0);
+        for (int j = 0; j < ids.length; j++) {
+            TbPurchaseDetalis detalis = baseMapper.selectById(ids[j]);
+            detalis.setNum(Integer.parseInt(nums[j]));//更改数量
+            detalis.setSum(detalis.getPurchasingPrice().multiply(new BigDecimal(detalis.getNum())));//更改钱
+            moeny = moeny.add(detalis.getSum());
+            baseMapper.updateById(detalis);
+        }
+        TbPurchase purchase = purchaseService.getPurchaseById(purchaseId);
+        purchase.setSum(moeny.setScale(2));
+        purchaseService.updatePurchase(purchase);
+        return 1;
+    }
+
+    @Override
+    public int addDetails(String idList, String numList) {
+        //先拆分ID
+        String[] ids = idList.split(",");
+        String[] nums = numList.split(",");
+        //生成采购单的一些基本信息
+        TbPurchase purchase = new TbPurchase();
+        purchase.setCode("CGD" + System.currentTimeMillis());
+        purchase.setIdList(idList);
+        purchase.setNumList(numList);
+        purchaseService.addPurchase(purchase);
+       BigDecimal moeny = new BigDecimal(0);
+        for (int j = 0; j < ids.length; j++) {
+            TbGoods goods = goodsService.getGoodsById(Integer.parseInt(ids[j]));
+            TbPurchaseDetalis detalis = new TbPurchaseDetalis();
+            detalis.setCode(goods.getCode());
+            detalis.setModel(goods.getModel());
+            detalis.setNum(Integer.parseInt(nums[j]));
+            detalis.setName(goods.getName());
+            detalis.setPurchasingPrice(goods.getPurchasingPrice());
+            detalis.setSellingPrice(goods.getSellingPrice());
+            detalis.setSum(goods.getPurchasingPrice().multiply(new BigDecimal(detalis.getNum())));
+            detalis.setIsEnter(TbPurchaseDetalis.ENTER_NO);
+            detalis.setPurchaseId(purchase.getId());
+            moeny = moeny.add(detalis.getSum());
+            baseMapper.insert(detalis);
+        }
+         purchase.setSum(moeny.setScale(2));
+        purchaseService.updatePurchase(purchase);
+        return 1;
+    }
+
+    @Override
+    public void deleteDetailsListByPurchaseId(Integer purchaseId) {
+        QueryWrapper<TbPurchaseDetalis> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("purchase_id",purchaseId);
+        baseMapper.delete(queryWrapper);
+    }
+
+    @Override
+    public List<TbPurchaseDetalis> getDetailsByPurchaseId(Integer page, Integer limit, Integer purchaseId) {
+        QueryWrapper<TbPurchaseDetalis> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");//条件按照升序排序
+        Page<TbPurchaseDetalis> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
         queryWrapper.eq("purchase_id", purchaseId);
         //找到当前采购单下采购的商品
         baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
-        List list = pageParam.getRecords();//数据
+        List<TbPurchaseDetalis> list = pageParam.getRecords();//数据
         total= pageParam.getTotal();
         return list;
     }
@@ -70,7 +119,7 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
      */
     @Override
     public void checkGoods(Integer page, Integer limit,Integer purchaseId, Map<String, Integer> map) {
-        List<TbPurchaseDetalis> list = getDetalisByPurchaseId(page,limit,purchaseId);
+        List<TbPurchaseDetalis> list = getDetailsByPurchaseId(page,limit,purchaseId);
         //遍历更改所有采购商品详情的入库状态,
         for (TbPurchaseDetalis detalis : list) {
             Integer id = detalis.getId();
