@@ -33,7 +33,7 @@ public class WarehouseController {
     @ApiOperation("新增仓库")
     @PostMapping("/addWarehouse")
     @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增仓库")
-    private Result addWarehouse(@RequestBody TbWarehouse warehouse) {
+    public Result addWarehouse(@RequestBody TbWarehouse warehouse) {
         int i = warehouseService.addWarehouse(warehouse);
         if (i == 1) {
             return Result.success();
@@ -44,7 +44,7 @@ public class WarehouseController {
     @ApiOperation("修改仓库")
     @PostMapping("/updateWarehouse")
     @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改仓库")
-    private Result updateWarehouse(@RequestBody TbWarehouse warehouse) {
+    public Result updateWarehouse(@RequestBody TbWarehouse warehouse) {
         int i = warehouseService.updateWarehouse(warehouse);
         if (i == 1) {
             return Result.success();
@@ -55,7 +55,7 @@ public class WarehouseController {
     @ApiOperation("删除仓库")
     @PostMapping("/deleteWarehouse")
     @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除仓库")
-    private Result deleteWarehouse(Integer id) {
+    public Result deleteWarehouse(Integer id) {
         int i = warehouseService.deleteWarehouse(id);
         if (i == 1) {
             return Result.success();
@@ -68,21 +68,21 @@ public class WarehouseController {
 
     @ApiOperation("根据id选择仓库")
     @PostMapping("/getWarehouseById")
-    private Result getWarehouseById(Integer id) {
+    public Result getWarehouseById(Integer id) {
         TbWarehouse warehouse = warehouseService.getWarehouseById(id);
         return  Result.success().data(warehouse);
     }
 
     @ApiOperation("返回仓库列表,带分页")
     @PostMapping("/getWarehouseList")
-    private Result getWarehouseList(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
+    public Result getWarehouseList(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
       List<TbWarehouse> list= warehouseService.getWarehouseList(page,limit,vo);
       return Result.success().listForPage(list,warehouseService.getTotal());
     }
 
     @ApiOperation("返回仓库列表，供select使用")
     @PostMapping("/getSelectList")
-    private Result getSelectList() {
+    public Result getSelectList() {
         List<TbWarehouse> list= warehouseService.getSelectList();
         return Result.success().data(list);
     }

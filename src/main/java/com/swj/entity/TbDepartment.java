@@ -24,8 +24,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "Tbdepartment对象", description = "")
-@TableName("Tbdepartment")
+@ApiModel(value = "department对象", description = "")
+@TableName("department")
 public class TbDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;

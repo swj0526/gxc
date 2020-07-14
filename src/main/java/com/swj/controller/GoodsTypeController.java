@@ -37,7 +37,7 @@ public class GoodsTypeController {
     @ApiOperation("新增商品类别")
     @PostMapping("/addGoodsType")
     @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增商品类别")
-    private Result addGoodsType(@RequestBody TbGoodsType goodsType) {
+    public Result addGoodsType(@RequestBody TbGoodsType goodsType) {
         int i = goodsTypeService.addGoodsType(goodsType);
         if (i == 1) {
             return Result.success();
@@ -48,7 +48,7 @@ public class GoodsTypeController {
     @ApiOperation("修改商品类别")
     @PostMapping("/updateGoodsType")
     @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改商品类别")
-    private Result updateGoodsType(@RequestBody TbGoodsType goodsType) {
+    public Result updateGoodsType(@RequestBody TbGoodsType goodsType) {
         int i = goodsTypeService.updateGoodsType(goodsType);
         if (i == 1) {
             return Result.success();
@@ -59,48 +59,50 @@ public class GoodsTypeController {
     @ApiOperation("删除商品类别")
     @PostMapping("/deleteGoodsType")
     @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除商品类别")
-    private Result deleteGoodsType(Integer id) {
+    public Result deleteGoodsType(Integer id) {
         int i = goodsTypeService.deleteGoodsType(id);
         if (i == 1) {
             return Result.success();
         }else  if(i==2){
             return Result.error().message("该分类下面有二级分类,不可删除!");
+        }else  if(i==3){
+            return Result.error().message("该分类下面有商品,不可删除!");
         }
         return Result.error().message("删除失败!");
     }
     @ApiOperation("根据id查找商品类别")
     @PostMapping("/getGoodsTypeById")
-    private Result getGoodsTypeById(Integer id) {
+    public Result getGoodsTypeById(Integer id) {
         TbGoodsType goodsType = goodsTypeService.getGoodsTypeById(id);
         return Result.success().data(goodsType);
     }
 
     @ApiOperation("返回商品类别列表,tree")
     @PostMapping("/getGoodsTypeList")
-    private Result getGoodsTypeList() {
+    public Result getGoodsTypeList() {
         List<OneSubject> list = goodsTypeService.getGoodsTypeList();
         return Result.success().data(list);
     }
     @ApiOperation("返回列表")
     @PostMapping("/getList")
-    private Result getList() {
+    public Result getList() {
         List<TbGoodsType> list = goodsTypeService.getList();
         return Result.success().data(list);
     }
 
     @ApiOperation("根据子id，返回父名称")
     @PostMapping("/getParent")
-    private Result getParent(Integer id) {
+    public Result getParent(Integer id) {
         return Result.success().data(goodsTypeService.getParent(id));
     }
     @ApiOperation("根据子id，返回父id")
     @PostMapping("/getPId")
-    private Result getPId(Integer id) {
+    public Result getPId(Integer id) {
         return Result.success().data(goodsTypeService.getPId(id));
     }
     @ApiOperation("根据id查找商品类别,返回name值")
     @PostMapping("/getNameById")
-    private Result getNameById(Integer id) {
+    public Result getNameById(Integer id) {
         TbGoodsType goodsType = goodsTypeService.getGoodsTypeById(id);
         return Result.success().data(goodsType.getName());
     }

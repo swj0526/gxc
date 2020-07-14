@@ -49,7 +49,7 @@ class WarehouseApplicationTests {
 
        // 3、数据源配置
        DataSourceConfig dsc = new DataSourceConfig();
-       dsc.setUrl("jdbc:mysql://localhost:3306/warehouse?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
+       dsc.setUrl("jdbc:mysql://localhost:3306/gxc?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
        dsc.setUsername("root");
        dsc.setPassword("123456");
@@ -67,7 +67,7 @@ class WarehouseApplicationTests {
 
        // 5、策略配置
        StrategyConfig strategy = new StrategyConfig();
-       strategy.setInclude("tbgoodsspecimen");//数据库表名
+       strategy.setInclude("menu");//数据库表名
        strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
        //strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 

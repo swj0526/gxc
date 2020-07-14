@@ -93,11 +93,25 @@ public class PurchaseController {
         List<TbPurchase> purchaseList = purchaseService.getPurchaseList(page, limit, vo);
         return Result.success().listForPage(purchaseList, purchaseService.getTotal());
     }
-    @ApiOperation("已完成采购单,分页")
+    @ApiOperation("已完成采购单（无异常）,分页")
     @PostMapping("/getPurchaseListEnd")
     public Result getPurchaseListEnd(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
         List<TbPurchase> purchaseList = purchaseService.getPurchaseListEnd(page, limit, vo);
         return Result.success().listForPage(purchaseList, purchaseService.getTotal());
+    }
+
+    @ApiOperation("返回仓库人员提交采购单的列表，分页")
+    @PostMapping("/getPurchaseListDefault")
+    public Result getPurchaseListDefault(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
+        List<TbPurchase> purchaseList = purchaseService.getPurchaseListDefault(page, limit, vo);
+        return Result.success().listForPage(purchaseList, purchaseService.getTotal());
+    }
+
+    @ApiOperation("分单，给采购部门员工分单")
+    @PostMapping("/setEmp")
+    public Result setEmp(Integer empId,Integer purchaseId) {
+        purchaseService.setEmp(empId,purchaseId);
+        return Result.success();
     }
 
     @ApiOperation("/仓库人员检查采购商品并入库")
@@ -108,10 +122,10 @@ public class PurchaseController {
         return Result.success();
     }
 
-    @ApiOperation("/返回各种状态的采购订单列表")
-    @PostMapping("/getPurchaseListByState")
-    public Result getPurchaseListByState(Integer page, Integer limit, Integer state) {
-        List<TbPurchase> list = purchaseService.getPurchaseListByState(page, limit, state);
+    @ApiOperation("/返回有异常的完成的采购单，分页")
+    @PostMapping("/getPurchaseListError")
+    public Result getPurchaseListError(Integer page, Integer limit,@RequestBody ConditionalVO vo) {
+        List<TbPurchase> list = purchaseService.getPurchaseListError(page, limit,vo);
         return Result.success().listForPage(list, purchaseService.getTotal());
     }
 

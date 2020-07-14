@@ -14,6 +14,7 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ import java.util.List;
 @RequestMapping("/customer")
 @CrossOrigin
 public class CustomerController {
-    @Autowired
+    @Resource
     private CustomerService customerService;
 
     @ApiOperation("添加供应商")

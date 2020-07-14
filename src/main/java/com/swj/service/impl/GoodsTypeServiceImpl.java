@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.swj.entity.TbGoodsSpecimen;
 import com.swj.entity.TbGoodsType;
 import com.swj.mapper.TbgoodstypeMapper;
+import com.swj.service.GoodsSpecimenService;
 import com.swj.service.GoodsTypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.swj.vo.tree.OneSubject;
 import com.swj.vo.tree.TwoSubject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ import java.util.List;
  */
 @Service
 public class GoodsTypeServiceImpl extends ServiceImpl<TbgoodstypeMapper, TbGoodsType> implements GoodsTypeService {
+   @Autowired
+   private GoodsSpecimenService goodsSpecimenService;
 
     @Override
     public int addGoodsType(TbGoodsType goodsType) {
@@ -47,6 +51,10 @@ public class GoodsTypeServiceImpl extends ServiceImpl<TbgoodstypeMapper, TbGoods
         List<TbGoodsType> list = baseMapper.selectList(queryWrapper);
         if(list.size()!=0){
             return 2;
+        }
+        Boolean specimen  = goodsSpecimenService.getSpecimenByTypeId(id);
+        if(specimen==false){
+            return 3;
         }
         return  baseMapper.deleteById(id);
     }

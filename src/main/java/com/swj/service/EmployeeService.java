@@ -38,4 +38,6 @@ public interface EmployeeService extends IService<TbEmployee> {
     List<TbEmployee> getWarehouseList();
 
     List<TbEmployee> getSelectList();
+
+    List<TbEmployee> getSelectListByPurchase();
 }

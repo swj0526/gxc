@@ -3,6 +3,7 @@ package com.swj.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.swj.entity.TbGoods;
+import com.swj.entity.TbGoodsInAndOut;
 import com.swj.entity.TbPurchase;
 import com.swj.entity.TbPurchaseDetalis;
 import com.swj.mapper.TbpurchasedetalisMapper;
@@ -32,13 +33,51 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
     private PurchaseService purchaseService;
     @Autowired
     private GoodsService goodsService;
-
-
-
-
+    @Autowired
+    private GoodsInAndOutServiceImpl goodsInAndOutService;
     @Override
     public long getTotal() {
         return total;
+    }
+
+    @Override
+    public int determineDetails(String idList, String numList, String remarkList, Integer purchaseId) {
+        //先拆分ID
+        String[] ids = idList.split(",");
+        String[] nums = numList.split(",");
+        String[] remarks = remarkList.split("@");
+        Boolean state =false;
+        for (int j = 0; j < ids.length; j++) {
+            TbPurchaseDetalis detalis = baseMapper.selectById(ids[j]);
+            if(detalis.getNum()!=Integer.parseInt(nums[j])){ //判断传递的商品那个是受损的
+                detalis.setNumInstock(Integer.parseInt(nums[j]));//更改数量
+                detalis.setNumError(detalis.getNum()-detalis.getNumInstock());
+                detalis.setRemark(remarks[j]);
+                state=true;
+            }
+            detalis.setIsEnter(TbPurchaseDetalis.ENTER_YES);
+            baseMapper.updateById(detalis);
+            //商品id
+            TbGoods goods = goodsService.getGoodsByCode(detalis.getCode());
+            //商品进库记录
+            TbGoodsInAndOut goodsInAndOut = new TbGoodsInAndOut();
+            goodsInAndOut.setGoodsId(goods.getId());
+            goodsInAndOut.setNum(Integer.parseInt(nums[j]));
+            goodsInAndOut.setState(TbGoodsInAndOut.STATE_INTO);//进库
+            goodsInAndOutService.addGoodsInAndOut(goodsInAndOut);
+            //更改商品的库存数量
+            goods.setInventoryQuantity(goods.getInventoryQuantity()+Integer.parseInt(nums[j]));
+            goodsService.updateGoods(goods);
+        }
+        TbPurchase purchase = purchaseService.getPurchaseById(purchaseId);
+        if(state==true){
+
+            purchase.setIsRead(TbPurchase.STATE_NO);
+        }else{
+            purchase.setIsRead(TbPurchase.STATE_END);
+        }
+        purchaseService.updatePurchase(purchase);
+        return 1;
     }
 
     @Override
@@ -82,6 +121,7 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
             detalis.setPurchasingPrice(goods.getPurchasingPrice());
             detalis.setSellingPrice(goods.getSellingPrice());
             detalis.setSum(goods.getPurchasingPrice().multiply(new BigDecimal(detalis.getNum())));
+            detalis.setNumInstock(detalis.getNum());
             detalis.setIsEnter(TbPurchaseDetalis.ENTER_NO);
             detalis.setPurchaseId(purchase.getId());
             moeny = moeny.add(detalis.getSum());

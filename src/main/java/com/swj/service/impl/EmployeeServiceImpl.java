@@ -104,6 +104,14 @@ public class EmployeeServiceImpl extends ServiceImpl<TbemployeeMapper, TbEmploye
     }
 
     @Override
+    public List<TbEmployee> getSelectListByPurchase() {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("department_id", TbDepartment.DEP_BUY);
+        List<TbEmployee> list = baseMapper.selectList(queryWrapper);
+        return list;
+    }
+
+    @Override
     public Integer changeState(Boolean state, Integer employeeId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("id", employeeId);

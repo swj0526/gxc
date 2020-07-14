@@ -109,6 +109,23 @@ public class GoodsSpecimenServiceImpl extends ServiceImpl<TbgoodsspecimenMapper,
         goodsService.addGoods(goods);//商品已入库
     }
 
+    /**
+     * 判断要删除的分类下面是否含有商品
+     * @param typeId
+     * @return
+     */
+    @Override
+    public Boolean getSpecimenByTypeId(Integer typeId) {
+        QueryWrapper<TbGoodsSpecimen> queryWrapper = new QueryWrapper<>();//封装一个条件对象
+        queryWrapper.eq("goods_type_id",typeId);
+        List<TbGoodsSpecimen> list = baseMapper.selectList(queryWrapper);
+        if(list.size()==0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     @Override
     public long getTotal() {
         return total;

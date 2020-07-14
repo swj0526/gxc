@@ -29,4 +29,6 @@ public interface PurchaseDetalisService extends IService<TbPurchaseDetalis> {
     int addDetails(String idList,String numList);
 
     int updateDetails(String idList, String numList,Integer purchaseId);
+
+    int determineDetails(String idList, String numList, String remarkList, Integer purchaseId);
 }

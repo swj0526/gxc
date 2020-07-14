@@ -105,5 +105,11 @@ public class EmployeeController {
         List<TbEmployee> list = employeeService.getWarehouseList();
         return Result.success().data(list);
     }
+    @ApiOperation("查询采购部的所有员工，供下拉列表用")
+    @PostMapping("/getSelectListByPurchase")
+    public Result getSelectListByPurchase() {
+        List<TbEmployee> list = employeeService.getSelectListByPurchase();
+        return Result.success().data(list);
+    }
 }
 

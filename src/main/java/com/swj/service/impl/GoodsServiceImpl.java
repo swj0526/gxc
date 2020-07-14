@@ -45,6 +45,14 @@ public class GoodsServiceImpl extends ServiceImpl<TbgoodsMapper, TbGoods> implem
     }
 
     @Override
+    public TbGoods getGoodsByCode(String code) {
+        QueryWrapper<TbGoods> queryWrapper = new QueryWrapper<>();//封装一个条件对象
+        queryWrapper.eq("code",code);
+        return  baseMapper.selectOne(queryWrapper);
+    }
+
+
+    @Override
     public List<TbGoods> getList(Integer page, Integer limit, ConditionalVO vo) {
         QueryWrapper<TbGoods> queryWrapper = new QueryWrapper<>();//封装一个条件对象
         queryWrapper.orderByDesc("create_time");//条件按照升序排序
@@ -146,15 +154,6 @@ public class GoodsServiceImpl extends ServiceImpl<TbgoodsMapper, TbGoods> implem
         if(goodsDB==null){
             return 0;
         }
-        //新入库商品数量更改
-        Integer num = goods.getNum();
-        goods.setInventoryQuantity(goods.getInventoryQuantity()+num);
-        //商品进库记录
-        TbGoodsInAndOut goodsInAndOut = new TbGoodsInAndOut();
-        goodsInAndOut.setGoodsId(goodsDB.getId());
-        goodsInAndOut.setNum(num);
-        goodsInAndOut.setState(TbGoodsInAndOut.STATE_INTO);//进库
-        goodsInAndOutService.addGoodsInAndOut(goodsInAndOut);
         return  baseMapper.updateById(goods);
     }
 

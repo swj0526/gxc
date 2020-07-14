@@ -31,10 +31,13 @@ public interface PurchaseService extends IService<TbPurchase> {
 
     long getTotal();
 
-
-    List<TbPurchase> getPurchaseListByState(Integer page, Integer limit, Integer state);
-
     int endPurchaseById(Integer purchaseId, int stateEnd);
 
     List<TbPurchase> getPurchaseListEnd(Integer page, Integer limit, ConditionalVO vo);
+
+    List<TbPurchase> getPurchaseListError(Integer page, Integer limit, ConditionalVO vo);
+
+    List<TbPurchase> getPurchaseListDefault(Integer page, Integer limit, ConditionalVO vo);
+
+    void setEmp(Integer empId, Integer purchaseId);
 }

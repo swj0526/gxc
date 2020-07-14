@@ -112,12 +112,15 @@ public class PurchaseServiceImpl extends ServiceImpl<TbpurchaseMapper, TbPurchas
     @Override
     public List<TbPurchase> getPurchaseListEnd(Integer page, Integer limit, ConditionalVO vo) {
         QueryWrapper<TbPurchase> queryWrapper = new QueryWrapper();
-        queryWrapper.orderByDesc("create_time");//条件按照升序排序
+        queryWrapper.orderByDesc("create_time");
         Page<TbPurchase> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
         String begin = vo.getBegin();
         String end = vo.getEnd();
         String keywords = vo.getKeywords();
-        queryWrapper.eq("is_read",TbPurchase.STATE_END);
+        List<Integer> rlist = new ArrayList<>();
+        rlist.add(TbPurchase.STATE_END);
+        rlist.add(TbPurchase.STATE_NO);
+        queryWrapper.in("is_read", rlist);
         if(!StringUtils.isEmpty(keywords)){
             queryWrapper.like("name", keywords).
                     or().like("code", keywords)
@@ -131,7 +134,7 @@ public class PurchaseServiceImpl extends ServiceImpl<TbpurchaseMapper, TbPurchas
         if (!StringUtils.isEmpty(end)) {
             queryWrapper.le("create_time", end);
         }
-        //降序排列,为了让新增的显示在前面方便查看
+
         baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
         List<TbPurchase> list = pageParam.getRecords();//数据
         total= pageParam.getTotal();
@@ -146,15 +149,63 @@ public class PurchaseServiceImpl extends ServiceImpl<TbpurchaseMapper, TbPurchas
     }
 
     @Override
-    public List<TbPurchase> getPurchaseListByState(Integer page, Integer limit, Integer state) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
+    public List<TbPurchase> getPurchaseListDefault(Integer page, Integer limit, ConditionalVO vo) {
+        QueryWrapper<TbPurchase> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");//条件按照升序排序
+        queryWrapper.eq("is_read",TbPurchase.STATE_DEFAULT);
+        String keywords = vo.getKeywords();
+        String end = vo.getEnd();
+        String begin = vo.getBegin();
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).or().like("code", keywords).or().like("model", keywords);
+        }
+
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge(" create_time", begin);
+        }
+
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("create_time", end);
+        }
         Page<TbPurchase> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
-        queryWrapper.orderByDesc("create_time");
         baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
         List<TbPurchase> list = pageParam.getRecords();//数据
         total= pageParam.getTotal();
         return list;
+    }
+
+    @Override
+    public List<TbPurchase> getPurchaseListError(Integer page, Integer limit,ConditionalVO vo) {
+        QueryWrapper<TbPurchase> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");//条件按照升序排序
+        queryWrapper.eq("is_read",TbPurchase.STATE_NO);
+        String keywords = vo.getKeywords();
+        String end = vo.getEnd();
+        String begin = vo.getBegin();
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).or().like("code", keywords).or().like("model", keywords);
+        }
+
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge(" create_time", begin);
+        }
+
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("create_time", end);
+        }
+        Page<TbPurchase> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
+        baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
+        List<TbPurchase> list = pageParam.getRecords();//数据
+        total= pageParam.getTotal();
+        return list;
+    }
+
+    @Override
+    public void setEmp(Integer empId, Integer purchaseId) {
+        TbPurchase purchase = baseMapper.selectById(purchaseId);
+        purchase.setEmpId(empId);
+        purchase.setIsRead(TbPurchase.STATE_READ);
+        baseMapper.updateById(purchase);
     }
 
     @Override

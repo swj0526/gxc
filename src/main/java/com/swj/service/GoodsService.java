@@ -23,6 +23,7 @@ public interface GoodsService extends IService<TbGoods> {
     int updateGoodsByWarn(TbGoods goods);
 
     TbGoods getGoodsById(Integer id);
+    TbGoods getGoodsByCode(String code);
 
     int deleteGoods(Integer id);
 

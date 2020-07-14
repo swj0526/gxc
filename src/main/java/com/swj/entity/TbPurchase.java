@@ -34,7 +34,8 @@ public class TbPurchase implements Serializable {
     public static final int STATE_DEFAULT=1;//仓库申请采购，生成了采购单，采购员未阅读
     public static final int STATE_READ=2;//采购员已阅读，（采购中）并按照采购单进行采购
     public static final int STATE_INTO=3;//采购员采购完成，仓库人员正在盘点入库（入库中）
-    public static final int STATE_END=4;//仓库人员完成入库，如有不合格的将会反馈
+    public static final int STATE_END=4;//仓库人员完成入库
+    public static final int STATE_NO=5;//不是必须状态，仓库完成入库，有损坏的商品是该状态
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
@@ -61,6 +62,10 @@ public class TbPurchase implements Serializable {
     @ApiModelProperty("是否阅读")
     @TableField(value = "is_read")
     private Integer isRead;
+
+    @ApiModelProperty("负责人")
+    @TableField(value = "emp_id")
+    private Integer empId;
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;

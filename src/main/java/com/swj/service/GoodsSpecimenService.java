@@ -29,4 +29,6 @@ public interface GoodsSpecimenService extends IService<TbGoodsSpecimen> {
     long getTotal();
 
     void instock(TbGoods goods);
+
+    Boolean getSpecimenByTypeId(Integer typeId);
 }

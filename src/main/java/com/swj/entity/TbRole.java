@@ -37,6 +37,10 @@ public class TbRole implements Serializable {
     @ApiModelProperty("权限列表")
     private String perms;
 
+    @ApiModelProperty("数据权限")
+    @TableField(value = "data_scope")
+    private Integer dataScope;
+
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;
 

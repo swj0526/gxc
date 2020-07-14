@@ -60,6 +60,15 @@ public class PurchaseDetailsController {
         }
         return Result.error().message("修改失败!");
     }
-
+    @ApiOperation("签收采购单")
+    @PostMapping("/determineDetails")
+    @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="仓库人员签收采购单")
+    public Result determineDetails(String idList,String numList,String remarkList,Integer purchaseId){
+        int i= detailsService.determineDetails(idList,numList,remarkList,purchaseId);
+        if(i==1){
+            return Result.success();
+        }
+        return Result.error().message("签收失败!");
+    }
 }
 

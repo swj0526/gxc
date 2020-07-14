@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-06-09
  */
 @RestController
-@RequestMapping("/tbdamagegoodlog")
-public class TbdamagegoodlogController {
+@RequestMapping("/damageGoodLog")
+public class DamageGoodLogController {
 
 }
 

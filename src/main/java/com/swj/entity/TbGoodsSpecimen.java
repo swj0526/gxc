@@ -33,6 +33,7 @@ public class TbGoodsSpecimen implements Serializable {
     private String code;
 
     @ApiModelProperty("商品名称")
+
     private String name;
 
     @ApiModelProperty("商品型号")

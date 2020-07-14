@@ -38,14 +38,14 @@ public class LogAspect {
      * 方法返回之后调用
      *
      * @param joinPoint
-     *
+     * @param returnValue 方法返回值
      */
-    @AfterReturning(value = "operationLog()")
-    public void doAfter(JoinPoint joinPoint) {
-        TbLog log = getLog(joinPoint);
+   @AfterReturning(value = "operationLog()", returning = "returnValue")
+    public void doAfter(JoinPoint joinPoint, Object returnValue) {
+        TbLog log = getLog(joinPoint, returnValue);
     }
 
-    private TbLog getLog(JoinPoint joinPoint) {
+    private TbLog getLog(JoinPoint joinPoint, Object returnValue) {
 //        //登录的session中去拿当前登录的用户Id
 //        Subject subject = SecurityUtils.getSubject();
 //        SysUserBaseVo user = null;
@@ -60,41 +60,44 @@ public class LogAspect {
 
         TbLog log = new TbLog();
         //获取类名称
-        String targetName = joinPoint.getTarget().getClass().getName();
-        Class targetClass = null;
+       String targetName = joinPoint.getTarget().getClass().getName();
+       Class targetClass = null;
         LogAnnotation logAnnotation = null;
-        try {
+       try {
             //反射
-            targetClass = Class.forName(targetName);
+           targetClass = Class.forName(targetName);
             //获得切入点所在类的所有方法
-            Method[] methods = targetClass.getMethods();
+           Method[] methods = targetClass.getMethods();
             //获取切入点的方法名称
             String methodName = joinPoint.getSignature().getName();
             //获取切入点的参数
-            Object[] arguments = joinPoint.getArgs();
+           Object[] arguments = joinPoint.getArgs();
 
             //遍历方法名
-            for (Method method : methods) {
+           for (Method method : methods) {
                 if (method.getName().equals(methodName)) {
-                    Class[] clazzs = method.getParameterTypes();
-                    //比较声明的参数个数和传入的是否相同
-                    if (clazzs.length == arguments.length) {
+                   Class[] clazzs = method.getParameterTypes();
+                   //比较声明的参数个数和传入的是否相同
+                     if (clazzs.length == arguments.length) {
                         //获取切入点方法上的注解
                         logAnnotation = method.getAnnotation(LogAnnotation.class);
-                        break;
-                    }
-                }
-            }
+                       break;
+                  }
+               }
+           }
             //为日志实体类赋值
             log.setState(logAnnotation.operationType().getOperateDesc());
-
+           if (returnValue.getClass() == HashMap.class) {
+                 //忽略shiro返回的数据
                 log.setRemark(logAnnotation.operateContent());
-
+           } else {
+                 log.setRemark(logAnnotation.operateContent() + ":" + returnValue);
+             }
             //logVo.setUserId(currentUserId);
             //获取ip地址
             ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = requestAttributes.getRequest();
-            log.setIp(IpUtil.getIpAddr(request));
+           log.setIp(IpUtil.getIpAddr(request));
             //添加日志
             logService.addLog(log);
 

@@ -49,7 +49,6 @@ public class GoodsInAndOutServiceImpl extends ServiceImpl<TbGoodsInAndOutMapper,
         if (!StringUtils.isEmpty(begin)) {
             queryWrapper.ge(" create_time", begin);
         }
-
         baseMapper.selectPage(pageParam,queryWrapper);
         List<TbGoodsInAndOut> list = pageParam.getRecords();//数据
         for(TbGoodsInAndOut log:list){

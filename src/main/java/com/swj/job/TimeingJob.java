@@ -6,11 +6,13 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //定时任务，执行任务的类以及方法
+@Component
 public class TimeingJob extends QuartzJobBean {
     @Autowired
     private GoodsService goodsService;

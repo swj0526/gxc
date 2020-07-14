@@ -1,8 +1,0 @@
-2020-06-22 08:43:40.906 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
-2020-06-22 08:43:43.298 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
-2020-06-22 08:43:43.316 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
-2020-06-22 11:06:12.952 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.swj]' package. Please check your configuration.
-2020-06-22 11:06:15.321 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
-2020-06-22 11:06:15.338 [main] WARN  s.d.s.w.readers.parameter.ParameterDataTypeReader - Trying to infer dataType java.util.Map<java.lang.String,java.lang.Integer>
-2020-06-22 11:32:48.939 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m11s946ms).
-2020-06-22 14:11:23.804 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h38m34s866ms).

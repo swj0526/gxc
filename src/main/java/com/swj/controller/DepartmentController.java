@@ -9,9 +9,10 @@ import com.swj.util.Result;
 import com.swj.vo.ConditionalVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -27,13 +28,13 @@ import java.util.List;
 @RequestMapping("/department")
 @CrossOrigin //跨域
 public class DepartmentController {
-    @Autowired
+    @Resource
     private DepartmentService departmentService;
 
     @ApiOperation("新增部门")
     @PostMapping("/addDepartment")
     @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="新增部门")
-    private Result addDepartment(@RequestBody TbDepartment department){
+    public Result addDepartment(@RequestBody TbDepartment department){
         int i= departmentService.addDepartment(department);
         if (i == 1) {
             return Result.success();
@@ -43,7 +44,7 @@ public class DepartmentController {
     @ApiOperation("修改部门")
     @PostMapping("/updateDepartment")
     @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改部门")
-    private Result updateDepartment(@RequestBody TbDepartment department){
+    public Result updateDepartment(@RequestBody TbDepartment department){
         int i= departmentService.updateDepartment(department);
         if (i == 1) {
             return Result.success();
@@ -54,7 +55,7 @@ public class DepartmentController {
     @ApiOperation("删除部门")
     @PostMapping("/deleteDepartment")
     @LogAnnotation(operationType= LogOperateTypeEnum.DEL,operateContent="删除部门")
-    private Result deleteDepartment(Integer id){
+    public Result deleteDepartment(Integer id){
         int i= departmentService.deleteDepartment(id);
         if (i == 1) {
             return Result.success();
@@ -65,21 +66,25 @@ public class DepartmentController {
     }
     @ApiOperation("根据id查找部门")
     @PostMapping("/getDepartmentById")
-    private Result getDepartmentById(Integer id){
+    public Result getDepartmentById(Integer id){
+
         TbDepartment department= departmentService.getDepartmentById(id);
+
         return Result.success().data(department);
     }
 
     @ApiOperation("返回部门列表,带分页")
     @PostMapping("/getDepartmentList")
-    private Result getDepartmentList(Integer page,Integer limit,@RequestBody ConditionalVO vo){
+    public Result getDepartmentList(Integer page,Integer limit,@RequestBody ConditionalVO vo){
+
         List<TbDepartment> list= departmentService.getDepartmentList(page,limit,vo);
+
         return Result.success().listForPage(list,departmentService.getTotal());
     }
 
     @ApiOperation("返回部门列表,共下拉框使用")
     @PostMapping("/getSelectList")
-    private Result getSelectList(){
+    public Result getSelectList(){
         List<TbDepartment> list= departmentService.getSelectList();
         return Result.success().data(list);
     }

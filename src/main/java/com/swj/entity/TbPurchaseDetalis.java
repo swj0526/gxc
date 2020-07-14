@@ -63,6 +63,21 @@ public class TbPurchaseDetalis implements Serializable {
     @TableField(value = "purchase_id")
     private Integer purchaseId;
 
+
+
+    @ApiModelProperty("是否入库,0未入库,1已入库")
+    @TableField("is_enter")
+    private Integer isEnter;
+
+    @ApiModelProperty("入库数量")
+    @TableField("num_instock")
+    private Integer numInstock;
+
+
+    @ApiModelProperty("受损数量")
+    @TableField("num_error")
+    private Integer numError;
+
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;
 
@@ -79,10 +94,5 @@ public class TbPurchaseDetalis implements Serializable {
     @ApiModelProperty("操作人id")
     @TableField(fill = FieldFill.INSERT_UPDATE,value = "operator_id")
     private Integer operatorId;
-
-    @ApiModelProperty("是否入库,0未入库,1已入库")
-    @TableField("is_enter")
-    private Integer isEnter;
-
 
 }

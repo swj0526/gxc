@@ -87,6 +87,7 @@ public class DepartmentServiceImpl extends ServiceImpl<TbdepartmentMapper, TbDep
         }
         baseMapper.selectPage(pageParam, queryWrapper);
         List<TbDepartment> list = pageParam.getRecords();//数据
+        System.out.println(list+"---------------");
         total = pageParam.getTotal();
         return list;
     }
