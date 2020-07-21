@@ -29,4 +29,6 @@ public interface RoleService extends IService<TbRole> {
     TbRole getRoleById(int id);
 
     void setPerms(int id, String perms);
+
+    List<TbRole> getSelectList();
 }

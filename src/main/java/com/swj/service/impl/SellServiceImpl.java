@@ -34,8 +34,7 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
     private GoodsService goodsService;
     @Autowired
     private SellDetalisService detalisService;
-    private String end;
-    private String keywords;
+
 
     @Override
     public int addSell(TbSell sell) {
@@ -51,7 +50,7 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
 
     @Override
     public int deleteSell(Integer id) {
-        return 0;
+        return baseMapper.deleteById(id);
     }
 
     @Override
@@ -104,7 +103,63 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
         String keywords = vo.getKeywords();
         String begin = vo.getBegin();
         String  end =   vo.getEnd();
-        queryWrapper.in("is_read", TbSell.STATE_END);
+        List<Integer> rlist = new ArrayList<>();
+        rlist.add(TbSell.STATE_END);
+        rlist.add(TbSell.STATE_ERROR);
+        queryWrapper.in("is_read", rlist);
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).
+                    or().like("code", keywords)
+                    .or().like("model", keywords);
+        }
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge(" create_time", begin);
+        }
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("create_time", end);
+        }
+        baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
+        List<TbSell> list = pageParam.getRecords();//数据
+        total = pageParam.getTotal();
+        return list;
+    }
+
+    @Override
+    public List<TbSell> getSellListError(Integer page, Integer limit, ConditionalVO vo) {
+        QueryWrapper<TbSell> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");
+        Page<TbSell> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
+        String keywords = vo.getKeywords();
+        String begin = vo.getBegin();
+        String  end =   vo.getEnd();
+        queryWrapper.in("is_read", TbSell.STATE_ERROR);
+        if(!StringUtils.isEmpty(keywords)){
+            queryWrapper.like("name", keywords).
+                    or().like("code", keywords)
+                    .or().like("model", keywords);
+        }
+        if (!StringUtils.isEmpty(begin)) {
+            queryWrapper.ge(" create_time", begin);
+        }
+        if (!StringUtils.isEmpty(end)) {
+            queryWrapper.le("create_time", end);
+        }
+        baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
+        List<TbSell> list = pageParam.getRecords();//数据
+        total = pageParam.getTotal();
+        return list;
+
+    }
+
+    @Override
+    public List<TbSell> getSellListDefault(Integer page, Integer limit, ConditionalVO vo) {
+        QueryWrapper<TbSell> queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("create_time");
+        Page<TbSell> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
+        String keywords = vo.getKeywords();
+        String begin = vo.getBegin();
+        String  end =   vo.getEnd();
+        queryWrapper.in("is_read", TbSell.STATE_DEFAULT);
         if(!StringUtils.isEmpty(keywords)){
             queryWrapper.like("name", keywords).
                     or().like("code", keywords)
@@ -133,7 +188,7 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
     public List<TbSell> getSellListByState(Integer page, Integer limit, Integer state) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("state", state);
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
+        queryWrapper.orderByDesc("create_time");//条件按照升序排序
         Page<TbSell> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
 
         queryWrapper.orderByDesc("create_time");
@@ -149,6 +204,14 @@ public class SellServiceImpl extends ServiceImpl<TbsellMapper, TbSell> implement
         TbSell sell = baseMapper.selectById(sellId);
         sell.setIsRead(state);
         return baseMapper.updateById(sell);
+    }
+
+    @Override
+    public void setEmp(Integer empId, Integer sellId) {
+        TbSell sell = baseMapper.selectById(sellId);
+        sell.setEmpId(empId);
+        sell.setIsRead(TbPurchase.STATE_READ);
+        baseMapper.updateById(sell);
     }
 
     @Override

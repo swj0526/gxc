@@ -36,4 +36,11 @@ public interface SellService extends IService<TbSell> {
     int endSellById(Integer sellId, int stateEnd);
 
     List<TbSell> getSellListEnd(Integer page, Integer limit, ConditionalVO vo);
+
+    List<TbSell> getSellListError(Integer page, Integer limit, ConditionalVO vo);
+
+
+    List<TbSell> getSellListDefault(Integer page, Integer limit, ConditionalVO vo);
+
+    void setEmp(Integer empId, Integer sellId);
 }

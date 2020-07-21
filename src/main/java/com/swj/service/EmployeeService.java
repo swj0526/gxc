@@ -40,4 +40,6 @@ public interface EmployeeService extends IService<TbEmployee> {
     List<TbEmployee> getSelectList();
 
     List<TbEmployee> getSelectListByPurchase();
+
+    TbEmployee getUserByName(String phone);
 }

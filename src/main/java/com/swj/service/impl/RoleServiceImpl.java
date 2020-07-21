@@ -83,4 +83,9 @@ public class RoleServiceImpl extends ServiceImpl<TbroleMapper, TbRole> implement
         role.setPerms(perms);
         baseMapper.updateById(role);
     }
+
+    @Override
+    public List<TbRole> getSelectList() {
+        return baseMapper.selectList(null);
+    }
 }

@@ -88,10 +88,14 @@ public class PurchaseDetalisServiceImpl extends ServiceImpl<TbpurchasedetalisMap
         BigDecimal moeny = new BigDecimal(0);
         for (int j = 0; j < ids.length; j++) {
             TbPurchaseDetalis detalis = baseMapper.selectById(ids[j]);
-            detalis.setNum(Integer.parseInt(nums[j]));//更改数量
-            detalis.setSum(detalis.getPurchasingPrice().multiply(new BigDecimal(detalis.getNum())));//更改钱
-            moeny = moeny.add(detalis.getSum());
-            baseMapper.updateById(detalis);
+            if(Integer.parseInt(nums[j])>0){
+                detalis.setNum(Integer.parseInt(nums[j]));//更改数量
+                detalis.setSum(detalis.getPurchasingPrice().multiply(new BigDecimal(detalis.getNum())));//更改钱
+                moeny = moeny.add(detalis.getSum());
+                baseMapper.updateById(detalis);
+            }else {
+                baseMapper.deleteById(detalis);
+            }
         }
         TbPurchase purchase = purchaseService.getPurchaseById(purchaseId);
         purchase.setSum(moeny.setScale(2));

@@ -83,4 +83,9 @@ public class ClientServiceImpl extends ServiceImpl<TbclientMapper, TbClient> imp
         //todo 添加时候后台做的校验
         return baseMapper.insert(client);
     }
+
+    @Override
+    public List<TbClient> selectList() {
+        return baseMapper.selectList(null);
+    }
 }

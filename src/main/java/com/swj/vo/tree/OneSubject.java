@@ -11,11 +11,13 @@ import java.util.List;
  * @create 2020-06-04 9:42
  */
 //封装tree的一级返回格式
-    @Data
+@Data
 public class OneSubject {
     private String id;
     private String pId;
     private String label;
     private String value;
+    private String path;
+    private String component;
     private List<TwoSubject> children = new ArrayList<>();
 }

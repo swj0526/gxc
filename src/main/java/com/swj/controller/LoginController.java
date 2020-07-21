@@ -2,6 +2,7 @@ package com.swj.controller;
 
 import com.swj.annotation.LogAnnotation;
 import com.swj.base.SC;
+import com.swj.service.EmployeeService;
 import com.swj.util.LogOperateTypeEnum;
 import com.swj.util.Result;
 import io.swagger.annotations.Api;
@@ -23,6 +24,9 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private HttpSession session;
+    @Autowired
+    private EmployeeService employeeService;
+
     @ApiOperation("登录")
     @PostMapping("/checkLogin")
     @LogAnnotation(operationType= LogOperateTypeEnum.LOGIN,operateContent="登陆")

@@ -67,7 +67,12 @@ public class RoleController {
         List<TbRole> list = roleService.getRoleList(page,limit,vo);
         return Result.success().listForPage(list,roleService.getTotal());
     }
-
+    @PostMapping("/getSelectList")
+    @ApiOperation("返回角色列表带,供下拉选")
+    public Result  getSelectList(){
+        List<TbRole> list = roleService.getSelectList();
+        return Result.success().data(list);
+    }
     @PostMapping("/getRoleById")
     @ApiOperation("根据id返回role")
     public Result  getRoleById(int id){

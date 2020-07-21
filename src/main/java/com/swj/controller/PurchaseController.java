@@ -100,7 +100,7 @@ public class PurchaseController {
         return Result.success().listForPage(purchaseList, purchaseService.getTotal());
     }
 
-    @ApiOperation("返回仓库人员提交采购单的列表，分页")
+    @ApiOperation("仓库人员提交采购单的列表，分页")
     @PostMapping("/getPurchaseListDefault")
     public Result getPurchaseListDefault(Integer page, Integer limit, @RequestBody ConditionalVO vo) {
         List<TbPurchase> purchaseList = purchaseService.getPurchaseListDefault(page, limit, vo);

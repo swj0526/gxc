@@ -25,8 +25,9 @@ public interface SellDetalisService extends IService<TbSellDetalis> {
 
     long getTotal();
 
-    int addDetails(String idList, String numList);
+    int addDetails(String idList, String numList,Integer clientId);
 
-    int updateDetails(String idList, String numList, Integer purchaseId);
+    int updateDetails(String idList, String numList, Integer sellId);
 
+    void determine(Integer sellId);
 }

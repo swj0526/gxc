@@ -86,5 +86,13 @@ public class TbSellDetalis implements Serializable {
     @TableField(value = "is_enter")
     private Integer isEnter;
 
+    @ApiModelProperty("出库数量")
+    @TableField("num_out")
+    private Integer numOut;
+
+
+    @ApiModelProperty("受损数量")
+    @TableField("num_error")
+    private Integer numError;
 
 }

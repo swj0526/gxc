@@ -68,5 +68,9 @@ public class TbEmployee implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE,value = "operator_id")
     private Integer operatorId;
 
+    @ApiModelProperty(value="角色id")
+    @TableField(value = "role_id")
+    private Integer roleId;
+
 
 }

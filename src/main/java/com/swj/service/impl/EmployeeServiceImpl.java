@@ -116,13 +116,13 @@ public class EmployeeServiceImpl extends ServiceImpl<TbemployeeMapper, TbEmploye
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("id", employeeId);
         TbEmployee employee = baseMapper.selectOne(queryWrapper);
-        if(state){ //打开账号
+        if (state) { //打开账号
             employee.setState(TbEmployee.STATE_OPEN);//状态更改
             String password = DigestUtils.md5DigestAsHex((employee.getPhone() + "123456").getBytes());
             employee.setPassword(password);
             baseMapper.updateById(employee);
             return 1;
-        }else {  //关闭账号
+        } else {  //关闭账号
             employee.setState(TbEmployee.STATE_CLOSE);//状态更改
             employee.setPassword("");
             baseMapper.updateById(employee);
@@ -152,5 +152,13 @@ public class EmployeeServiceImpl extends ServiceImpl<TbemployeeMapper, TbEmploye
     @Override
     public long getTotal() {
         return total;
+    }
+
+    @Override
+    public TbEmployee getUserByName(String phone) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("phone", phone);
+
+        return baseMapper.selectOne(queryWrapper);
     }
 }

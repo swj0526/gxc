@@ -40,6 +40,9 @@ public class TbMenu implements Serializable {
     @ApiModelProperty("地址")
     private String url;
 
+    @ApiModelProperty("路径")
+    private String path;
+
     @ApiModelProperty("权限标示")
     private String label;
 

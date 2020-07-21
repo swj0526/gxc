@@ -45,6 +45,8 @@ public class MenuServiceImpl extends ServiceImpl<TbmenuMapper, TbMenu> implement
              oneSubject.setPId("0");
              QueryWrapper query = new QueryWrapper();
              query.eq("p_id", menu.getId());
+             oneSubject.setPath(menu.getUrl());
+
               //返回列表的二级分类
              List<TbMenu> c_list = baseMapper.selectList(query);
              List<TwoSubject> t_list = new ArrayList<>();
@@ -54,6 +56,8 @@ public class MenuServiceImpl extends ServiceImpl<TbmenuMapper, TbMenu> implement
                 twoSubject.setLabel(c.getName());
                 twoSubject.setPId(oneSubject.getId());
                 twoSubject.setValue(c.getId().toString());
+                twoSubject.setPath(c.getPath());
+                twoSubject.setComponent(c.getUrl());
                  t_list.add(twoSubject);
              }
              oneSubject.setChildren(t_list);

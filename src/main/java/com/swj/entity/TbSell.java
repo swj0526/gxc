@@ -33,6 +33,7 @@ public class TbSell implements Serializable {
     public static final int STATE_OUT=2;//仓库已阅读,按照销售单出货
     public static final int STATE_SEND=3;//货已出，正在配送给客户
     public static final int STATE_END=4;//客户收货，订单完成
+    public static final int STATE_ERROR=5;//可选状态，订单完成，损坏的商品，客户退货
 
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -66,6 +67,9 @@ public class TbSell implements Serializable {
     @TableField(value = "is_read")
     private Integer isRead;
 
+    @ApiModelProperty("负责人")
+    @TableField(value = "emp_id")
+    private Integer empId;
 
     @TableField(fill = FieldFill.INSERT,value = "create_time")
     private Timestamp createTime;

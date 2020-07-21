@@ -45,8 +45,8 @@ public class SellDetailsController {
     @ApiOperation("添加销售单的详情信息")
     @PostMapping("/addDetails")
     @LogAnnotation(operationType= LogOperateTypeEnum.ADD,operateContent="添加销售单的详情")
-    public Result addDetails(String idList,String numList){
-        int i= detailsService.addDetails(idList,numList);
+    public Result addDetails(String idList,String numList,Integer clientId){
+        int i= detailsService.addDetails(idList,numList,clientId);
         if(i==1){
             return Result.success();
         }
@@ -55,8 +55,8 @@ public class SellDetailsController {
     @ApiOperation("修改销售单的详情信息")
     @PostMapping("/updateDetails")
     @LogAnnotation(operationType= LogOperateTypeEnum.UPDATE,operateContent="修改销售单的详情")
-    public Result updateDetails(String idList,String numList,Integer purchaseId){
-        int i= detailsService.updateDetails(idList,numList,purchaseId);
+    public Result updateDetails(String idList,String numList,Integer sellId){
+        int i= detailsService.updateDetails(idList,numList,sellId);
         if(i==1){
             return Result.success();
         }

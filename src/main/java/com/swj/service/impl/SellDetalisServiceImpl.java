@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.swj.entity.*;
 import com.swj.mapper.TbselldetalisMapper;
+import com.swj.service.GoodsInAndOutService;
 import com.swj.service.GoodsService;
 import com.swj.service.SellDetalisService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -33,7 +34,8 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
  @Autowired
  private GoodsService goodsService;
 
-
+@Autowired
+private GoodsInAndOutService goodsInAndOutService;
 
     @Override
     public long getTotal() {
@@ -42,12 +44,10 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
 
     @Override
     public  List<TbSellDetalis> getDetailsBySellId(Integer page, Integer limit,Integer sellId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryWrapper<TbSellDetalis> queryWrapper = new QueryWrapper();
         queryWrapper.eq("sell_id",sellId);
-        queryWrapper.orderByAsc("create_time");//条件按照升序排序
+        queryWrapper.orderByDesc("create_time");//条件按照升序排序
         Page<TbSellDetalis> pageParam = new Page<>(page, limit);//把分页的条件封装成一个对象
-
-        queryWrapper.orderByDesc("create_time");
         baseMapper.selectPage(pageParam, queryWrapper); //按照分页跟条件去查找数据
         List<TbSellDetalis> list = pageParam.getRecords();//数据
         total= pageParam.getTotal();
@@ -81,7 +81,9 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
     }
 
     @Override
-    public int addDetails(String idList, String numList) {
+    public int addDetails(String idList, String numList,Integer clientId) {
+        //todo 判断客户是否存在
+
         //先拆分ID
         String[] ids = idList.split(",");
         String[] nums = numList.split(",");
@@ -108,12 +110,56 @@ public class SellDetalisServiceImpl extends ServiceImpl<TbselldetalisMapper, TbS
             baseMapper.insert(detalis);
         }
         sell.setSum(moeny.setScale(2));
+        sell.setClientId(clientId);
         sellService.updateSell(sell);
         return 1;
     }
 
     @Override
-    public int updateDetails(String idList, String numList, Integer purchaseId) {
-        return 0;
+    public int updateDetails(String idList, String numList, Integer sellId) {
+        //先拆分ID
+        String[] ids = idList.split(",");
+        String[] nums = numList.split(",");
+        BigDecimal moeny = new BigDecimal(0);
+        for (int j = 0; j < ids.length; j++) {
+            TbSellDetalis detalis = baseMapper.selectById(ids[j]);
+            if(Integer.parseInt(nums[j])>0){
+                detalis.setNum(Integer.parseInt(nums[j]));//更改数量
+                detalis.setSum(detalis.getSellingPrice().multiply(new BigDecimal(detalis.getNum())));//更改钱
+                moeny = moeny.add(detalis.getSum());
+                baseMapper.updateById(detalis);
+            }else {
+                baseMapper.deleteById(detalis);
+            }
+        }
+        TbSell sell = sellService.getSellById(sellId);
+        sell.setSum(moeny.setScale(2));
+        sellService.updateSell(sell);
+        return 1;
+    }
+
+    @Override
+    public void determine(Integer sellId) {
+      QueryWrapper<TbSellDetalis> queryWrapper = new QueryWrapper<>();
+       queryWrapper.eq("sell_id", sellId);
+        List<TbSellDetalis> list = baseMapper.selectList(queryWrapper);
+        for(TbSellDetalis d:list){
+            d.getCode();//商品编号
+            d.getNum();//数量
+            TbGoods goods = goodsService.getGoodsByCode(d.getCode());
+            System.out.println("+++++++++++++"+goods);
+            goods.setInventoryQuantity(goods.getInventoryQuantity()-d.getNum());
+            //todo 判断一下商品库存是否为负数
+            goodsService.updateGoods(goods);
+            //出入库记录
+            TbGoodsInAndOut goodsInAndOut = new TbGoodsInAndOut();
+            goodsInAndOut.setState(TbGoodsInAndOut.STATE_OUT);
+            goodsInAndOut.setNum(d.getNum());
+            goodsInAndOut.setGoodsId(goods.getId());
+            goodsInAndOutService.addGoodsInAndOut(goodsInAndOut);
+        }
+        TbSell sell = sellService.getSellById(sellId);
+        sell.setIsRead(TbSell.STATE_SEND);
+        sellService.updateSell(sell);
     }
 }

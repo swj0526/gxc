@@ -1,5 +1,6 @@
 package com.swj.config;
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 
@@ -62,5 +63,14 @@ public class shiroConfig {
         //未授权后,没有权限跳转的页面
         bean.setUnauthorizedUrl("/toUnauth");
         return bean;
+    }
+    //密码对比器交给   Realm
+    @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher(){
+        HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+        credentialsMatcher.setHashAlgorithmName("sha-256");//声明加密方式
+        //credentialsMatcher.setHashIterations(10000);//迭代次数
+        credentialsMatcher.setStoredCredentialsHexEncoded(false);//true=hex格式,false=base64格式
+        return credentialsMatcher;
     }
 }

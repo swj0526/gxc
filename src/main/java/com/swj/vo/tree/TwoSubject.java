@@ -14,4 +14,6 @@ public class TwoSubject {
     private String pId;
     private String value;
     private String label;
+    private String path;
+    private String component;
 }

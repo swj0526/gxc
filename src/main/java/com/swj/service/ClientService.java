@@ -28,4 +28,6 @@ public interface ClientService extends IService<TbClient> {
     List<TbClient> getClientList (Integer page, Integer limit, ConditionalVO vo);
 
     long getTotal();
+
+    List<TbClient> selectList();
 }

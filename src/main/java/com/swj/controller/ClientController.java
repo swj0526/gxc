@@ -76,5 +76,12 @@ public class ClientController {
         List<TbClient> list = clientService.getClientList(page, limit, vo);
         return Result.success().listForPage(list, clientService.getTotal());
     }
+    @PostMapping("/selectList")
+    @ApiOperation("客户列表下拉选使用")
+    public Result selectList() {
+        List<TbClient> list = clientService.selectList();
+        return Result.success().data(list);
+    }
+
 }
 
